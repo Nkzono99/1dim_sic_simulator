@@ -1,0 +1,42 @@
+&random
+    random_seed = 3000299
+/
+
+&simulation
+    nsteps = 5000
+    npcl_init(1) = 1024
+    npcl_init(2) = 1024
+    max_npcl = 1024000
+    ngrid = 1024
+    dx = 1.0d0
+    dt = 5.0d-8
+/
+
+&solver
+    solve_method = 0
+    error_limit = 1.0d-5
+    max_loop_count = 100000
+    find_exact_solution = .true.
+    convergence_judge_interval = 10
+    refinement_interval = 100
+    refinement_threshold = 10
+/
+
+&output
+    output_steps = 5000
+    output_kinetic_energy = .true.
+    output_electrostatic_energy = .true.
+    output_distance_between_tracers = .true.
+    output_npcl = .true.
+/
+
+&plasma
+    nspec = 2,
+    lambda = 10.0d0,
+    q_ratio(1) = -1.0d0,
+    q_ratio(2) = 1.0d0,
+    m_ratio(1) = 1.0d0,
+    m_ratio(2) = 1836.15d0,
+    Ts(1) = 1.0d6
+    Ts(2) = 1.0d6
+/

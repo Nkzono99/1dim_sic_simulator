@@ -30,3 +30,17 @@
 *.exe
 *.out
 *.app
+
+# Backup files
+*.i90
+
+# Experimental files
+job.sh
+simulation_data/
+build/
+*.csv
+*.o*
+*.e*
+*.gif
+*.png
+!doc/**/*

@@ -125,12 +125,6 @@ contains
         integer, intent(in), optional :: output_number
         integer :: output_number_
 
-        if (present(output_number)) then
-            output_number_ = output_number
-        else
-            output_number_ = 11
-        end if
-
         namelist /random/ random_seed
         namelist /simulation/ nsteps, npcl_init, max_npcl, ngrid, dx, dt, boundary_type
         namelist /solver/ solve_method, error_limit, max_loop_count, find_exact_solution, convergence_judge_interval, &
@@ -138,6 +132,12 @@ contains
         namelist /output/ output_steps, output_kinetic_energy, output_electrostatic_energy, output_distance_between_tracers, &
                 & output_npcl
         namelist /plasma/ nspec, lambda, q_ratio, m_ratio, Ts
+
+        if (present(output_number)) then
+            output_number_ = output_number
+        else
+            output_number_ = 11
+        end if
 
         open (output_number_, file=inputfilename)
         read (output_number_, nml=random)

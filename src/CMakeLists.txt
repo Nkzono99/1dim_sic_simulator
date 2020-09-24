@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.13.2)
 project(1dim_sic_simulator)
 enable_language(Fortran)
 
-set(EXECUTABLE main.exe)
+set(EXECUTABLE main)
 
 add_executable(
     ${EXECUTABLE}

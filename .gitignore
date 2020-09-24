@@ -43,4 +43,5 @@ build/
 *.e*
 *.gif
 *.png
+*.bat
 !doc/**/*

@@ -129,7 +129,7 @@ contains
         real(8), intent(in) :: b_norm
         logical :: exactly_converged
         real(8) :: val, diff
-        integer :: i, j
+        integer :: i
 
         call correct_phi_boundary
 

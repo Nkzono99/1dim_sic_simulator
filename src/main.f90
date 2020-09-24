@@ -85,6 +85,9 @@ contains
         print *, 'debye length =', lambda
         print *, 'wpe =', 1/lambda*sqrt(kB*Ts(1)/me)
         print *, '--------------------------'
+        print *, '---- Parallel Parameter ----'
+        print *, 'number of thread =', nthreads
+        print *, '----------------------------'
     end subroutine
 
     !> @brief 電位が正しく計算されているかチェックする.

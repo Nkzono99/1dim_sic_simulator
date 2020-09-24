@@ -64,3 +64,16 @@ if args.show:
     plt.show()
 else:
     plt.savefig(os.path.join(args.datadir, 'distance.png'))
+
+plt.figure()
+npcls = load_csv(os.path.join(args.datadir, 'npcl.csv'))
+for ispec in range(nspec):
+    plt.plot(t, npcls[:, ispec], label='p{}'.format(ispec+1))
+plt.legend()
+plt.xlabel('t [s]')
+plt.ylabel('npcl')
+
+if args.show:
+    plt.show()
+else:
+    plt.savefig(os.path.join(args.datadir, 'npcls.png'))

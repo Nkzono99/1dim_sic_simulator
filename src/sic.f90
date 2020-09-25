@@ -233,7 +233,7 @@ contains
             end do
         end do
 
-        call correct_rho_boundary
+        call boundary_correct_rho
     end subroutine
 
     !> @brief 粒子の電荷を分配する.
@@ -270,8 +270,8 @@ contains
 
                 px1 = px(ipcl1, ispec) + ngrid*dx*ncycles(ipcl1, ispec) + offset1
                 px2 = px(ipcl2, ispec) + ngrid*dx*ncycles(ipcl2, ispec) + offset2
-                lpx1 = pmod(px1, ngrid*dx)
-                lpx2 = pmod(px2, ngrid*dx)
+                lpx1 = utils_pmod(px1, ngrid*dx)
+                lpx2 = utils_pmod(px2, ngrid*dx)
 
                 dpx = abs(px2 - px1)
                 ldpx = abs(lpx2 - lpx1)
@@ -368,7 +368,7 @@ contains
             end do
         end do
 
-        call correct_pcl_boundary
+        call boundary_correct_pcl
     end subroutine
 
     !> @brief simplexに及ぼされる電場の大きさを計算する.
@@ -400,8 +400,8 @@ contains
 
         px1 = px(ipcl1, ispec) + ngrid*dx*ncycles(ipcl1, ispec) + offset1
         px2 = px(ipcl2, ispec) + ngrid*dx*ncycles(ipcl2, ispec) + offset2
-        lpx1 = pmod(px1, ngrid*dx)
-        lpx2 = pmod(px2, ngrid*dx)
+        lpx1 = utils_pmod(px1, ngrid*dx)
+        lpx2 = utils_pmod(px2, ngrid*dx)
 
         dpx = abs(px2 - px1)
         ldpx = abs(lpx2 - lpx1)
@@ -503,7 +503,7 @@ contains
             end do
         end do
 
-        call correct_pcl_boundary
+        call boundary_correct_pcl
     end subroutine
 
 end module

@@ -41,7 +41,7 @@ contains
         end do
 
         call sort_for_species(ispec, npcl_prev+1, npcl(ispec))
-        call correct_pcl_boundary
+        call boundary_correct_pcl
     end subroutine
 
     !> @brief 粒子をランダムに配置する.
@@ -71,7 +71,7 @@ contains
         end do
 
         call sort_for_species(ispec, npcl_prev+1, npcl(ispec))
-        call correct_pcl_boundary
+        call boundary_correct_pcl
     end subroutine
 
     !> @brief 粒子を一つ追加する.

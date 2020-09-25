@@ -7,6 +7,7 @@ module utils
 
     private pi
     public utils_rand_bm, utils_rand_bm2
+    public utils_pmod
 
 contains
 
@@ -71,12 +72,12 @@ contains
     !>
     !> @param[in] a 割られる数
     !> @param[in] b 割る数
-    !> @retval pmod 正剰余
-    function pmod(a, b)
+    !> @retval utils_pmod 正剰余
+    function utils_pmod(a, b)
         real(8), intent(in) :: a
         real(8), intent(in) :: b
-        real(8) :: pmod
-        pmod = a - floor(a/b)*b
+        real(8) :: utils_pmod
+        utils_pmod = a - floor(a/b)*b
     end function
 
 end module

@@ -11,31 +11,31 @@ module boundary
     private correct_pcl_reflective, correct_rho_reflective
     private correct_phi_reflective, correct_ex_reflective
 
-    public correct_pcl_boundary, correct_rho_boundary
-    public correct_phi_boundary, correct_ex_boundary
+    public boundary_correct_pcl, boundary_correct_rho
+    public boundary_correct_phi, boundary_correct_ex
 
 contains
 
     !> @brief 粒子に境界条件を適用する.
-    subroutine correct_pcl_boundary
+    subroutine boundary_correct_pcl
         if (boundary_type == 0) call correct_pcl_periodic
         if (boundary_type == 1) call correct_pcl_reflective
     end subroutine
 
     !> @brief 粒子密度に境界条件を適用する.
-    subroutine correct_rho_boundary
+    subroutine boundary_correct_rho
         if (boundary_type == 0) call correct_rho_periodic
         if (boundary_type == 1) call correct_rho_reflective
     end subroutine
 
     !> @brief 電位に境界条件を適用する.
-    subroutine correct_phi_boundary
+    subroutine boundary_correct_phi
         if (boundary_type == 0) call correct_phi_periodic
         if (boundary_type == 1) call correct_phi_reflective
     end subroutine
 
     !> @brief 電場に境界条件を適用する.
-    subroutine correct_ex_boundary
+    subroutine boundary_correct_ex
         if (boundary_type == 0) call correct_ex_periodic
         if (boundary_type == 1) call correct_ex_reflective
     end subroutine

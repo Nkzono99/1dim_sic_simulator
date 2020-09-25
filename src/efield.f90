@@ -61,7 +61,7 @@ contains
             phi(i) = real(fft_buf(i))
         end do
         !$omp end parallel do
-        call correct_phi_boundary
+        call boundary_correct_phi
     end subroutine
 
     !> 反復法(ガウスザイデル法)を用いてポアソン方程式を解き電位を計算する.
@@ -78,7 +78,7 @@ contains
             b_norm = sqrt(b_norm)/eps0
         end if
 
-        call correct_phi_boundary
+        call boundary_correct_phi
 
         ! 反復法によりポアソン方程式を解き電位分布を求める
         is_converged = .false.
@@ -101,7 +101,7 @@ contains
             do i = 1, ngrid
                 phi(i) = phibuf(i)
             end do
-            call correct_phi_boundary
+            call boundary_correct_phi
 
             ! 収束していたら反復を終了
             if (is_converged) exit
@@ -131,7 +131,7 @@ contains
         real(8) :: val, diff
         integer :: i
 
-        call correct_phi_boundary
+        call boundary_correct_phi
 
         val = 0
         do i = 1, ngrid
@@ -157,7 +157,7 @@ contains
             ex(i) = (ex(i - 1) + ex(i))*0.5
         end do
 
-        call correct_ex_boundary
+        call boundary_correct_ex
     end subroutine
 
 end module

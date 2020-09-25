@@ -2,6 +2,7 @@
 module sic
     use parameters
     use commons
+    use utils
     use particles
 
     implicit none
@@ -213,18 +214,18 @@ contains
     subroutine sic_scatter_on_grid
         integer :: ispec, i
 
-        rho(:) = 0
-        rhospec(:, :) = 0
+        rho(0:ngrid + 1) = 0
+        rhospec(0:ngrid + 1, 1:nspec) = 0
 
         call sic_scatter_b0
 
-        do ispec = 1, nspec
-            ! apply period boundary
-            if (boundary_type == 0) then
+        ! apply period boundary
+        if (boundary_type == 0) then
+            do ispec = 1, nspec
                 rhospec(1, ispec) = rhospec(1, ispec) + rhospec(ngrid + 1, ispec)
                 rhospec(ngrid, ispec) = rhospec(ngrid, ispec) + rhospec(0, ispec)
-            end if
-        end do
+            end do
+        end if
 
         do ispec = 1, nspec
             do i = 1, ngrid
@@ -237,10 +238,25 @@ contains
 
     !> @brief 粒子の電荷を分配する.
     subroutine sic_scatter_b0
-        integer :: ispec, isimp, ipcl1, ipcl2
-        integer :: i, i1, i2, dcycle
-        real(8) :: d1, d2, px1, px2, dpx, ldpx
+        integer :: ispec, isimp
+        integer :: i
+
+        ! simplex構造体の値を格納する一時変数
+        integer :: ipcl1, ipcl2
         real(8) :: rate, offset1, offset2
+
+        integer :: il, ir  ! 粒子の所属するグリッド番号
+        real(8) :: dl, dr  ! 粒子の所属するグリッドでの相対位置 (0.0 ~ 1.0)
+
+        integer :: dcycle  ! シミュレーション空間を何周しているか
+
+        real(8) :: px1, px2  ! 粒子の実際の位置 (-inf ~ +inf)
+        real(8) :: lpx1, lpx2  ! 粒子のシミュレーション空間での位置 (0.0 ~ ngrid*dx)
+
+        real(8) :: dpx  ! 粒子の実際の距離 (0.0 ~ +inf)
+        real(8) :: ldpx  ! 粒子のシミュレーション空間での距離 (0.0 ~ ngrid*dx)
+
+        ! グリッド全体に足す値を格納する変数
         real(8) :: all_sum
 
         do ispec = 1, nspec
@@ -251,33 +267,77 @@ contains
                 rate = simplices(isimp, ispec)%rate
                 offset1 = simplices(isimp, ispec)%offset1
                 offset2 = simplices(isimp, ispec)%offset2
+
                 px1 = px(ipcl1, ispec) + ngrid*dx*ncycles(ipcl1, ispec) + offset1
                 px2 = px(ipcl2, ispec) + ngrid*dx*ncycles(ipcl2, ispec) + offset2
-                dpx = px2 - px1
-                ldpx = px(ipcl2, ispec) - px(ipcl1, ispec)
+                lpx1 = pmod(px1, ngrid*dx)
+                lpx2 = pmod(px2, ngrid*dx)
 
-                dcycle = ncycles(ipcl1, ispec) - ncycles(ipcl2, ispec)
-                all_sum = all_sum + abs(dcycle)/abs(dpx)*rate
+                dpx = abs(px2 - px1)
+                ldpx = abs(lpx2 - lpx1)
 
-                i1 = int(px(ipcl1, ispec)/dx + 0.5)
-                d1 = (px(ipcl1, ispec)/dx + 0.5) - i1
-                i2 = int(px(ipcl2, ispec)/dx + 0.5)
-                d2 = (px(ipcl2, ispec)/dx + 0.5) - i2
+                dcycle = int(dpx/ngrid*dx)
+                all_sum = all_sum + dcycle*dx/dpx*rate
 
-                if (i1 == i2) then
-                    rhospec(i1, ispec) = rhospec(i1, ispec) + ldpx/dpx*rate
-                else if (i1 < i2) then
-                    rhospec(i1, ispec) = rhospec(i1, ispec) + (1 - d1)/dpx*rate
-                    do i = i1 + 1, i2 - 1
-                        rhospec(i, ispec) = rhospec(i, ispec) + 1.0/dpx*rate
-                    end do
-                    rhospec(i2, ispec) = rhospec(i2, ispec) + d2/dpx*rate
+                if (lpx1 < lpx2) then
+                    il = int(lpx1/dx + 0.5)
+                    dl = (lpx1/dx + 0.5) - il
+                    ir = int(lpx2/dx + 0.5)
+                    dr = (lpx2/dx + 0.5) - ir
                 else
-                    rhospec(i2, ispec) = rhospec(i2, ispec) - (1 - d2)/dpx*rate
-                    do i = i2 + 1, i1 - 1
-                        rhospec(i, ispec) = rhospec(i, ispec) - 1.0/dpx*rate
-                    end do
-                    rhospec(i1, ispec) = rhospec(i1, ispec) - d1/dpx*rate
+                    il = int(lpx2/dx + 0.5)
+                    dl = (lpx2/dx + 0.5) - il
+                    ir = int(lpx1/dx + 0.5)
+                    dr = (lpx1/dx + 0.5) - ir
+                end if
+
+                if ((lpx2 - lpx1)*(px2 - px1) >= 0) then
+                    ! 以下のようなsimplexの場合(ここで足し込むのは+マーク部分)
+                    ! |                      |
+                    ! |  case 1              |
+                    ! |    o+++++++++++o     |
+                    ! |  case 2              |
+                    ! |    o-----------------|
+                    ! |-----++++++++++++o    |
+                    ! |                      |
+                    if (il == ir) then
+                        rhospec(il, ispec) = rhospec(il, ispec) + rate
+                    else
+                        rhospec(il, ispec) = rhospec(il, ispec) + (1 - dl)*dx/dpx*rate
+                        do i = il + 1, ir - 1
+                            rhospec(i, ispec) = rhospec(i, ispec) + dx/dpx*rate
+                        end do
+                        rhospec(ir, ispec) = rhospec(ir, ispec) + dr*dx/dpx*rate
+                    end if
+                else
+                    ! 以下のようなsimplexの場合(ここで足し込むのは+マーク部分)
+                    ! |                     |
+                    ! |  case 1             |
+                    ! |++++o           o++++|
+                    ! |  case 2             |
+                    ! |++++o                |
+                    ! |---------------------|
+                    ! |                o++++|
+                    ! |                     |
+                    if (il == 0) then
+                        rhospec(0, ispec) = rhospec(0, ispec) + (dl - 0.5)*dx/dpx*rate
+                    else
+                        rhospec(0, ispec) = rhospec(0, ispec) + 0.5*dx/dpx*rate
+                        do i = 1, il - 1
+                            rhospec(i, ispec) = rhospec(i, ispec) + dx/dpx*rate
+                        end do
+                        rhospec(il, ispec) = rhospec(il, ispec) + dl*dx/dpx*rate
+                    end if
+
+                    if (ir == ngrid) then
+                        rhospec(ngrid, ispec) = rhospec(ngrid, ispec) + (0.5 - dr)*dx/dpx*rate
+                    else
+                        rhospec(ir, ispec) = rhospec(ir, ispec) + (1 - dr)*dx/dpx*rate
+                        do i = ir + 1, ngrid - 1
+                            rhospec(i, ispec) = rhospec(i, ispec) + dx/dpx*rate
+                        end do
+                        rhospec(ngrid, ispec) = rhospec(ngrid, ispec) + 0.5*dx/dpx*rate
+                    end if
                 end if
             end do
 
@@ -291,22 +351,21 @@ contains
     subroutine sic_update
         integer :: ispec, ipcl
         integer :: isimp1, isimp2
-        real(8) :: ex_p, ex_prev
+        real(8) :: ex_p
 
         do ispec = 1, nspec
-            ex_prev = 0
             do ipcl = 1, npcl(ispec)
                 isimp1 = pcl2simp(ipcl, ispec, 1)
                 isimp2 = pcl2simp(ipcl, ispec, 2)
+
                 ex_p = 0.5*(calc_ex(isimp1, ispec) + calc_ex(isimp2, ispec))
 
-                pvx(ipcl - 1, ispec) = pvx(ipcl - 1, ispec) + dt*qs(ispec)/ms(ispec)*ex_prev
-                px(ipcl - 1, ispec) = px(ipcl - 1, ispec) + dt*pvx(ipcl - 1, ispec)
-
-                ex_prev = ex_p
+                pvx(ipcl, ispec) = pvx(ipcl, ispec) + dt*qs(ispec)/ms(ispec)*ex_p
             end do
-            pvx(npcl(ispec), ispec) = pvx(npcl(ispec), ispec) + dt*qs(ispec)/ms(ispec)*ex_p
-            px(npcl(ispec), ispec) = px(npcl(ispec), ispec) + dt*pvx(npcl(ispec), ispec)
+
+            do ipcl = 1, npcl(ispec)
+                px(ipcl, ispec) = px(ipcl, ispec) + dt*pvx(ipcl, ispec)
+            end do
         end do
 
         call correct_pcl_boundary
@@ -319,10 +378,20 @@ contains
     function calc_ex(isimp, ispec) result(ex_p)
         integer, intent(in) :: isimp, ispec
         real(8) :: ex_p
-        integer :: i, i1, i2, dcycle
-        real(8) :: d1, d2, px1, px2, dpx, ldpx
-        real(8) :: offset1, offset2
+        integer :: i
+
+        ! simplex構造体の値を格納する一時変数
         integer :: ipcl1, ipcl2
+        real(8) :: rate, offset1, offset2
+
+        integer :: il, ir  ! 粒子の所属するグリッド番号
+        real(8) :: dl, dr  ! 粒子の所属するグリッドでの相対位置 (0.0 ~ 1.0)
+
+        real(8) :: px1, px2  ! 粒子の実際の位置 (-inf ~ +inf)
+        real(8) :: lpx1, lpx2  ! 粒子のシミュレーション空間での位置 (0.0 ~ ngrid*dx)
+
+        real(8) :: dpx  ! 粒子の実際の距離 (0.0 ~ +inf)
+        real(8) :: ldpx  ! 粒子のシミュレーション空間での距離 (0.0 ~ ngrid*dx)
 
         ipcl1 = simplices(isimp, ispec)%ipcl1
         ipcl2 = simplices(isimp, ispec)%ipcl2
@@ -331,30 +400,72 @@ contains
 
         px1 = px(ipcl1, ispec) + ngrid*dx*ncycles(ipcl1, ispec) + offset1
         px2 = px(ipcl2, ispec) + ngrid*dx*ncycles(ipcl2, ispec) + offset2
-        dpx = px2 - px1
-        ldpx = px(ipcl2, ispec) - px(ipcl1, ispec)
+        lpx1 = pmod(px1, ngrid*dx)
+        lpx2 = pmod(px2, ngrid*dx)
 
-        dcycle = ncycles(ipcl1, ispec) - ncycles(ipcl2, ispec)
+        dpx = abs(px2 - px1)
+        ldpx = abs(lpx2 - lpx1)
 
-        i1 = int(px(ipcl1, ispec)/dx + 0.5)
-        d1 = (px(ipcl1, ispec)/dx + 0.5) - i1
-        i2 = int(px(ipcl2, ispec)/dx + 0.5)
-        d2 = (px(ipcl2, ispec)/dx + 0.5) - i2
-
-        if (i1 == i2) then
-            ex_p = ldpx/dpx*ex(i1)
-        else if (i1 < i2) then
-            ex_p = (1 - d1)/dpx*ex(i1)
-            do i = i1 + 1, i2 - 1
-                ex_p = ex_p + 1.0/dpx*ex(i)
-            end do
-            ex_p = ex_p + d2/dpx*ex(i2)
+        if (lpx1 < lpx2) then
+            il = int(lpx1/dx + 0.5)
+            dl = (lpx1/dx + 0.5) - il
+            ir = int(lpx2/dx + 0.5)
+            dr = (lpx2/dx + 0.5) - ir
         else
-            ex_p = -(1 - d2)/dpx*ex(i2)
-            do i = i2 + 1, i1 - 1
-                ex_p = ex_p - 1.0/dpx*ex(i)
-            end do
-            ex_p = ex_p - d1/dpx*ex(i1)
+            il = int(lpx2/dx + 0.5)
+            dl = (lpx2/dx + 0.5) - il
+            ir = int(lpx1/dx + 0.5)
+            dr = (lpx1/dx + 0.5) - ir
+        end if
+
+        ex_p = 0.0
+        if ((lpx2 - lpx1)*(px2 - px1) >= 0) then
+            ! 以下のようなsimplexの場合(ここで足し込むのは+マーク部分)
+            ! |                      |
+            ! |  case 1              |
+            ! |    o+++++++++++o     |
+            ! |  case 2              |
+            ! |    o-----------------|
+            ! |-----++++++++++++o    |
+            ! |                      |
+            if (il == ir) then
+                ex_p = ex_p + ex(il)
+            else
+                ex_p = ex_p + (1 - dl)*dx/dpx*ex(il)
+                do i = il + 1, ir - 1
+                    ex_p = ex_p + dx/dpx*ex(i)
+                end do
+                ex_p = ex_p + dr*dx/dpx*ex(ir)
+            end if
+        else
+            ! 以下のようなsimplexの場合(ここで足し込むのは+マーク部分)
+            ! |                     |
+            ! |  case 1             |
+            ! |++++o           o++++|
+            ! |  case 2             |
+            ! |++++o                |
+            ! |---------------------|
+            ! |                o++++|
+            ! |                     |
+            if (il == 0) then
+                ex_p = ex_p + (dl - 0.5)*dx/dpx*ex(0)
+            else
+                ex_p = ex_p + 0.5*dx/dpx*ex(0)
+                do i = 1, il - 1
+                    ex_p = ex_p + dx/dpx*ex(i)
+                end do
+                ex_p = ex_p + dl*dx/dpx*ex(il)
+            end if
+
+            if (ir == ngrid) then
+                ex_p = ex_p + (0.5 - dr)*dx/dpx*rate
+            else
+                ex_p = ex_p + (1 - dr)*dx/dpx*ex(ir)
+                do i = ir + 1, ngrid - 1
+                    ex_p = ex_p + dx/dpx*ex(i)
+                end do
+                ex_p = ex_p + 0.5*dx/dpx*ex(ngrid)
+            end if
         end if
     end function
 

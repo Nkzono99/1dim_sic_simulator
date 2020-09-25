@@ -67,4 +67,16 @@ contains
         z2 = sqrt(-2*log(x))*sin(2*pi*y)
     end subroutine
 
+    !> @brief 正剰余を返す.
+    !>
+    !> @param[in] a 割られる数
+    !> @param[in] b 割る数
+    !> @retval pmod 正剰余
+    function pmod(a, b)
+        real(8), intent(in) :: a
+        real(8), intent(in) :: b
+        real(8) :: pmod
+        pmod = a - floor(a/b)*b
+    end function
+
 end module

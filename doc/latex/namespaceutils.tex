@@ -14,7 +14,7 @@ subroutine, public \mbox{\hyperlink{namespaceutils_a26d9e81c0f5f068383b7d46404d7
 \begin{DoxyCompactList}\small\item\em Box-\/\+Muller法により正規分布に従う乱数を生成する. \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespaceutils_a57ae2593fe7800ddc8aeedf3244458db}{utils\+\_\+rand\+\_\+bm2}} (z1, z2)
 \begin{DoxyCompactList}\small\item\em Box-\/\+Muller法により正規分布に従う2つの独立な乱数を生成する. \end{DoxyCompactList}\item 
-real(8) function \mbox{\hyperlink{namespaceutils_ab5223de8ad707e9d66d1a4fb97fb57f2}{pmod}} (a, b)
+real(8) function, public \mbox{\hyperlink{namespaceutils_a81288a1b11f3f3e850053227d2333e4f}{utils\+\_\+pmod}} (a, b)
 \begin{DoxyCompactList}\small\item\em 正剰余を返す. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -22,11 +22,11 @@ real(8) function \mbox{\hyperlink{namespaceutils_ab5223de8ad707e9d66d1a4fb97fb57
 Utilityモジュール 
 
 \doxysubsection{Function/\+Subroutine Documentation}
-\mbox{\Hypertarget{namespaceutils_ab5223de8ad707e9d66d1a4fb97fb57f2}\label{namespaceutils_ab5223de8ad707e9d66d1a4fb97fb57f2}} 
-\index{utils@{utils}!pmod@{pmod}}
-\index{pmod@{pmod}!utils@{utils}}
-\doxysubsubsection{\texorpdfstring{pmod()}{pmod()}}
-{\footnotesize\ttfamily real(8) function utils\+::pmod (\begin{DoxyParamCaption}\item[{real(8), intent(in)}]{a,  }\item[{real(8), intent(in)}]{b }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{namespaceutils_a81288a1b11f3f3e850053227d2333e4f}\label{namespaceutils_a81288a1b11f3f3e850053227d2333e4f}} 
+\index{utils@{utils}!utils\_pmod@{utils\_pmod}}
+\index{utils\_pmod@{utils\_pmod}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{utils\_pmod()}{utils\_pmod()}}
+{\footnotesize\ttfamily real(8) function, public utils\+::utils\+\_\+pmod (\begin{DoxyParamCaption}\item[{real(8), intent(in)}]{a,  }\item[{real(8), intent(in)}]{b }\end{DoxyParamCaption})}
 
 
 
@@ -41,7 +41,7 @@ Utilityモジュール
 \end{DoxyParams}
 
 \begin{DoxyRetVals}{Return values}
-{\em pmod} & 正剰余 \\
+{\em utils\+\_\+pmod} & 正剰余 \\
 \hline
 \end{DoxyRetVals}
 \mbox{\Hypertarget{namespaceutils_a26d9e81c0f5f068383b7d46404d7d6fa}\label{namespaceutils_a26d9e81c0f5f068383b7d46404d7d6fa}} 

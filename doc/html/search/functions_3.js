@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['fft_5finit_138',['fft_init',['../namespacefft.html#af00aacbe640c67770b5ea1357f0b6454',1,'fft']]],
-  ['fft_5finverse_5ftransform_139',['fft_inverse_transform',['../namespacefft.html#af99727e7e01fc39c26ddbba6b31b79b9',1,'fft']]],
-  ['fft_5ftransform_140',['fft_transform',['../namespacefft.html#abb101a3d422465ed3a74bc84eb5c4a82',1,'fft']]]
+  ['efield_5fupdate_136',['efield_update',['../namespaceefield.html#aa3e1da626e85f46b666ff7edf547aea5',1,'efield']]],
+  ['exactly_5fconverged_137',['exactly_converged',['../namespaceefield.html#a124c572d4ce31325ed92daaf6b8a83d6',1,'efield']]]
 ];

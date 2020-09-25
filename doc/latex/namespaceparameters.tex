@@ -1,0 +1,149 @@
+\hypertarget{namespaceparameters}{}\doxysection{parameters Module Reference}
+\label{namespaceparameters}\index{parameters@{parameters}}
+
+
+パラメータモジュール.  
+
+
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine, public \mbox{\hyperlink{namespaceparameters_a64188ca7020e09324152ec2a91a5000e}{parameters\+\_\+init}} (inputfilename, output\+\_\+number)
+\begin{DoxyCompactList}\small\item\em パラメータをファイルから読み込み初期化する. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceparameters_a6e3f5cad65b2420f2dd2d3dc4e04804b}\label{namespaceparameters_a6e3f5cad65b2420f2dd2d3dc4e04804b}} 
+real(8), parameter, public \mbox{\hyperlink{namespaceparameters_a6e3f5cad65b2420f2dd2d3dc4e04804b}{eps0}} = 8.\+8541878128\mbox{\hyperlink{namespaceparameters_a946259232ec7586c1a1f418b66abb398}{e}}-\/12
+\begin{DoxyCompactList}\small\item\em 真空の誘電率\mbox{[}F/m\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a425727f61406663b608747b678ef7779}\label{namespaceparameters_a425727f61406663b608747b678ef7779}} 
+real(8), parameter, public \mbox{\hyperlink{namespaceparameters_a425727f61406663b608747b678ef7779}{kb}} = 1.\+380649\mbox{\hyperlink{namespaceparameters_a946259232ec7586c1a1f418b66abb398}{e}}-\/23
+\begin{DoxyCompactList}\small\item\em ボルツマン定数\mbox{[}J/K\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a946259232ec7586c1a1f418b66abb398}\label{namespaceparameters_a946259232ec7586c1a1f418b66abb398}} 
+real(8), parameter, public \mbox{\hyperlink{namespaceparameters_a946259232ec7586c1a1f418b66abb398}{e}} = 1.\+6021766343e-\/19
+\begin{DoxyCompactList}\small\item\em 電気素量 \mbox{[}C\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a184eec95b1cfbae0f1819df05e12edbf}\label{namespaceparameters_a184eec95b1cfbae0f1819df05e12edbf}} 
+real(8), parameter, public \mbox{\hyperlink{namespaceparameters_a184eec95b1cfbae0f1819df05e12edbf}{me}} = 9.\+10938356\mbox{\hyperlink{namespaceparameters_a946259232ec7586c1a1f418b66abb398}{e}}-\/31
+\begin{DoxyCompactList}\small\item\em 電子質量 \mbox{[}kg\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a6c0362eae5a266d29018ce266b2bcb55}\label{namespaceparameters_a6c0362eae5a266d29018ce266b2bcb55}} 
+real(8), parameter, public \mbox{\hyperlink{namespaceparameters_a6c0362eae5a266d29018ce266b2bcb55}{pi}} = 3.\+14159265359
+\begin{DoxyCompactList}\small\item\em 円周率 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a402ac2b1acba21a0e9487023da144ca0}\label{namespaceparameters_a402ac2b1acba21a0e9487023da144ca0}} 
+integer, parameter, public \mbox{\hyperlink{namespaceparameters_a402ac2b1acba21a0e9487023da144ca0}{max\+\_\+nspec}} = 5
+\begin{DoxyCompactList}\small\item\em シミュレーションできる粒子の最大種類数 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a2c70a15613816409aa4490ad5131cc0e}\label{namespaceparameters_a2c70a15613816409aa4490ad5131cc0e}} 
+integer, public \mbox{\hyperlink{namespaceparameters_a2c70a15613816409aa4490ad5131cc0e}{random\+\_\+seed}} = -\/1
+\begin{DoxyCompactList}\small\item\em 乱数のシード値(-\/1の場合実行ごとに異なるシード値を与える) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a4c2e26739d4053828a07e3f5de9baae4}\label{namespaceparameters_a4c2e26739d4053828a07e3f5de9baae4}} 
+integer, public \mbox{\hyperlink{namespaceparameters_a4c2e26739d4053828a07e3f5de9baae4}{nsteps}}
+\begin{DoxyCompactList}\small\item\em シミュレーションステップ数 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a7b100e2dea245480115b4b112fac5239}\label{namespaceparameters_a7b100e2dea245480115b4b112fac5239}} 
+integer, public \mbox{\hyperlink{namespaceparameters_a7b100e2dea245480115b4b112fac5239}{output\+\_\+steps}}
+\begin{DoxyCompactList}\small\item\em 出力ステップ数 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a5b8fe3de5880a49c66a52c4dee2603ce}\label{namespaceparameters_a5b8fe3de5880a49c66a52c4dee2603ce}} 
+integer, public \mbox{\hyperlink{namespaceparameters_a5b8fe3de5880a49c66a52c4dee2603ce}{output\+\_\+skips}}
+\begin{DoxyCompactList}\small\item\em 出力ステップ間隔 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a316c3557f8613012afa789b756a805ec}\label{namespaceparameters_a316c3557f8613012afa789b756a805ec}} 
+logical, public \mbox{\hyperlink{namespaceparameters_a316c3557f8613012afa789b756a805ec}{output\+\_\+kinetic\+\_\+energy}} = .false.
+\begin{DoxyCompactList}\small\item\em 出力フラグ 運動エネルギーを出力するか \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a522e40874a433032e8ee52b3e4c2abd3}\label{namespaceparameters_a522e40874a433032e8ee52b3e4c2abd3}} 
+logical, public \mbox{\hyperlink{namespaceparameters_a522e40874a433032e8ee52b3e4c2abd3}{output\+\_\+electrostatic\+\_\+energy}} = .false.
+\begin{DoxyCompactList}\small\item\em 静電エネルギーを出力するか \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a7b1033391d1fb60a6d86d63f4694bd60}\label{namespaceparameters_a7b1033391d1fb60a6d86d63f4694bd60}} 
+logical, public \mbox{\hyperlink{namespaceparameters_a7b1033391d1fb60a6d86d63f4694bd60}{output\+\_\+distance\+\_\+between\+\_\+tracers}} = .false.
+\begin{DoxyCompactList}\small\item\em 平均トレーサー間距離を出力するか \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_adb9d01d9b0b50a47f2b7e32d5de22e53}\label{namespaceparameters_adb9d01d9b0b50a47f2b7e32d5de22e53}} 
+logical, public \mbox{\hyperlink{namespaceparameters_adb9d01d9b0b50a47f2b7e32d5de22e53}{output\+\_\+npcl}} = .false.
+\begin{DoxyCompactList}\small\item\em トレーサー数を出力するか \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a106c7a93f18c58f213c610e83f4d6d31}\label{namespaceparameters_a106c7a93f18c58f213c610e83f4d6d31}} 
+integer, public \mbox{\hyperlink{namespaceparameters_a106c7a93f18c58f213c610e83f4d6d31}{boundary\+\_\+type}} = 0
+\begin{DoxyCompactList}\small\item\em 境界条件(0\+: 周期境界条件, 1\+: 反射境界条件) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a122b7c96650d0fac8398400bbae9ccb3}\label{namespaceparameters_a122b7c96650d0fac8398400bbae9ccb3}} 
+integer, public \mbox{\hyperlink{namespaceparameters_a122b7c96650d0fac8398400bbae9ccb3}{solve\+\_\+method}} = 0
+\begin{DoxyCompactList}\small\item\em 静電場の解き方(0\+: スペクトル法, 1\+: 反復法) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_ad231d6120d312c7a6988c59b617bfe58}\label{namespaceparameters_ad231d6120d312c7a6988c59b617bfe58}} 
+real(8), public \mbox{\hyperlink{namespaceparameters_ad231d6120d312c7a6988c59b617bfe58}{error\+\_\+limit}} = 1.\+0d-\/6
+\begin{DoxyCompactList}\small\item\em 反復法の収束条件(平均相対変化率がこれ以下になれば終了) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a284421460b1e6032c73b649413a85b22}\label{namespaceparameters_a284421460b1e6032c73b649413a85b22}} 
+integer, public \mbox{\hyperlink{namespaceparameters_a284421460b1e6032c73b649413a85b22}{max\+\_\+loop\+\_\+count}} = 1e5
+\begin{DoxyCompactList}\small\item\em 最大反復回数 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a62b8e45eafcecfeda90b0fb00ce5c225}\label{namespaceparameters_a62b8e45eafcecfeda90b0fb00ce5c225}} 
+logical, public \mbox{\hyperlink{namespaceparameters_a62b8e45eafcecfeda90b0fb00ce5c225}{find\+\_\+exact\+\_\+solution}} = .false.
+\begin{DoxyCompactList}\small\item\em 厳密に収束判定を行うか \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a6446f66b1d055bef17b59af7e48b3bd6}\label{namespaceparameters_a6446f66b1d055bef17b59af7e48b3bd6}} 
+integer, public \mbox{\hyperlink{namespaceparameters_a6446f66b1d055bef17b59af7e48b3bd6}{convergence\+\_\+judge\+\_\+interval}} = 1
+\begin{DoxyCompactList}\small\item\em 何ループごとに収束判定を行うか \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_ad77ee2eac1442a04cf861e8d4b50f01b}\label{namespaceparameters_ad77ee2eac1442a04cf861e8d4b50f01b}} 
+integer, dimension(\mbox{\hyperlink{namespaceparameters_a402ac2b1acba21a0e9487023da144ca0}{max\+\_\+nspec}}), public \mbox{\hyperlink{namespaceparameters_ad77ee2eac1442a04cf861e8d4b50f01b}{npcl\+\_\+init}}
+\begin{DoxyCompactList}\small\item\em 初期のトレーサー数 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a2c180b386f7fb11064a4423455d94fb0}\label{namespaceparameters_a2c180b386f7fb11064a4423455d94fb0}} 
+integer, dimension(\mbox{\hyperlink{namespaceparameters_a402ac2b1acba21a0e9487023da144ca0}{max\+\_\+nspec}}) \mbox{\hyperlink{namespaceparameters_a2c180b386f7fb11064a4423455d94fb0}{npcl}} = 0
+\begin{DoxyCompactList}\small\item\em 現在のトレーサー数 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a2c661e9f0ecb692fa28dd0fbd480f7c9}\label{namespaceparameters_a2c661e9f0ecb692fa28dd0fbd480f7c9}} 
+integer, public \mbox{\hyperlink{namespaceparameters_a2c661e9f0ecb692fa28dd0fbd480f7c9}{max\+\_\+npcl}}
+\begin{DoxyCompactList}\small\item\em 最大トレーサー数 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a1eb0ee3801e2cfbb11b555688923e8ec}\label{namespaceparameters_a1eb0ee3801e2cfbb11b555688923e8ec}} 
+integer, public \mbox{\hyperlink{namespaceparameters_a1eb0ee3801e2cfbb11b555688923e8ec}{ngrid}}
+\begin{DoxyCompactList}\small\item\em 空間グリッド数 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_ae1f1868cfabf07bcb8083445393b14d4}\label{namespaceparameters_ae1f1868cfabf07bcb8083445393b14d4}} 
+real(8), public \mbox{\hyperlink{namespaceparameters_ae1f1868cfabf07bcb8083445393b14d4}{dx}}
+\begin{DoxyCompactList}\small\item\em グリッド幅 \mbox{[}m\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_af44276aeec84d75019f6780b191dcf17}\label{namespaceparameters_af44276aeec84d75019f6780b191dcf17}} 
+real(8), public \mbox{\hyperlink{namespaceparameters_af44276aeec84d75019f6780b191dcf17}{dt}}
+\begin{DoxyCompactList}\small\item\em 時間幅 \mbox{[}s\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a30fce8c77933f979f131c30f73ad76c4}\label{namespaceparameters_a30fce8c77933f979f131c30f73ad76c4}} 
+real(8), public \mbox{\hyperlink{namespaceparameters_a30fce8c77933f979f131c30f73ad76c4}{lambda}}
+\begin{DoxyCompactList}\small\item\em デバイ長 \mbox{[}m\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_af7132c40ae02bc265a40546968b07b79}\label{namespaceparameters_af7132c40ae02bc265a40546968b07b79}} 
+integer, public \mbox{\hyperlink{namespaceparameters_af7132c40ae02bc265a40546968b07b79}{nspec}}
+\begin{DoxyCompactList}\small\item\em 粒子の種類数 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_acb3e2891fe06f9f5da0a658adeebbc46}\label{namespaceparameters_acb3e2891fe06f9f5da0a658adeebbc46}} 
+real(8), dimension(\mbox{\hyperlink{namespaceparameters_a402ac2b1acba21a0e9487023da144ca0}{max\+\_\+nspec}}), public \mbox{\hyperlink{namespaceparameters_acb3e2891fe06f9f5da0a658adeebbc46}{q\+\_\+ratio}}
+\begin{DoxyCompactList}\small\item\em 各粒子の質量と電子の質量の比 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_ac10efa6fde0c4ef1df09d79d467ad603}\label{namespaceparameters_ac10efa6fde0c4ef1df09d79d467ad603}} 
+real(8), dimension(\mbox{\hyperlink{namespaceparameters_a402ac2b1acba21a0e9487023da144ca0}{max\+\_\+nspec}}), public \mbox{\hyperlink{namespaceparameters_ac10efa6fde0c4ef1df09d79d467ad603}{m\+\_\+ratio}}
+\begin{DoxyCompactList}\small\item\em 各粒子の電荷と電気素量の比 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_ac540400519168e516258b743526d40a3}\label{namespaceparameters_ac540400519168e516258b743526d40a3}} 
+real(8), dimension(\mbox{\hyperlink{namespaceparameters_a402ac2b1acba21a0e9487023da144ca0}{max\+\_\+nspec}}), public \mbox{\hyperlink{namespaceparameters_ac540400519168e516258b743526d40a3}{ts}}
+\begin{DoxyCompactList}\small\item\em 各粒子の温度 \mbox{[}K\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a9c4b457c04950711d04db121cb3e2054}\label{namespaceparameters_a9c4b457c04950711d04db121cb3e2054}} 
+real(8), public \mbox{\hyperlink{namespaceparameters_a9c4b457c04950711d04db121cb3e2054}{npcl\+\_\+per\+\_\+super}}
+\begin{DoxyCompactList}\small\item\em 一つのsimplexに割り当てる粒子数 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a71f6c117b2ba61c174deb48e4a54f179}\label{namespaceparameters_a71f6c117b2ba61c174deb48e4a54f179}} 
+real(8), dimension(\mbox{\hyperlink{namespaceparameters_a402ac2b1acba21a0e9487023da144ca0}{max\+\_\+nspec}}), public \mbox{\hyperlink{namespaceparameters_a71f6c117b2ba61c174deb48e4a54f179}{qs}}
+\begin{DoxyCompactList}\small\item\em 一つのsimplexの電荷 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a67ef4f76de2b0ae9d021c0e21cd6eae5}\label{namespaceparameters_a67ef4f76de2b0ae9d021c0e21cd6eae5}} 
+real(8), dimension(\mbox{\hyperlink{namespaceparameters_a402ac2b1acba21a0e9487023da144ca0}{max\+\_\+nspec}}), public \mbox{\hyperlink{namespaceparameters_a67ef4f76de2b0ae9d021c0e21cd6eae5}{ms}}
+\begin{DoxyCompactList}\small\item\em 一つのsimplexの質量 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_ada61f5d60d03aebac7ed807f924af868}\label{namespaceparameters_ada61f5d60d03aebac7ed807f924af868}} 
+integer, public \mbox{\hyperlink{namespaceparameters_ada61f5d60d03aebac7ed807f924af868}{refinement\+\_\+interval}} = 0
+\begin{DoxyCompactList}\small\item\em refinementを実行する間隔(0ならrefinementを行わない) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a8302b40667dcbcc4e08fbb0f7d6a79f5}\label{namespaceparameters_a8302b40667dcbcc4e08fbb0f7d6a79f5}} 
+real(8), public \mbox{\hyperlink{namespaceparameters_a8302b40667dcbcc4e08fbb0f7d6a79f5}{refinement\+\_\+threshold}} = 1
+\begin{DoxyCompactList}\small\item\em refinementを実行するしきい値 \mbox{[}grid\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a5e6c8b2ca772fbe6674bbaf3119a95a9}\label{namespaceparameters_a5e6c8b2ca772fbe6674bbaf3119a95a9}} 
+integer, public \mbox{\hyperlink{namespaceparameters_a5e6c8b2ca772fbe6674bbaf3119a95a9}{nthreads}} = 1
+\begin{DoxyCompactList}\small\item\em スレッド数 (プログラム実行時に格納される) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+パラメータモジュール. 
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceparameters_a64188ca7020e09324152ec2a91a5000e}\label{namespaceparameters_a64188ca7020e09324152ec2a91a5000e}} 
+\index{parameters@{parameters}!parameters\_init@{parameters\_init}}
+\index{parameters\_init@{parameters\_init}!parameters@{parameters}}
+\doxysubsubsection{\texorpdfstring{parameters\_init()}{parameters\_init()}}
+{\footnotesize\ttfamily subroutine, public parameters\+::parameters\+\_\+init (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{inputfilename,  }\item[{integer, intent(in), optional}]{output\+\_\+number }\end{DoxyParamCaption})}
+
+
+
+パラメータをファイルから読み込み初期化する. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em inputfilename} & パラメータファイル名 \\
+\hline
+\mbox{\texttt{ in}}  & {\em output\+\_\+number} & 出力番号(default\+: 11) \\
+\hline
+\end{DoxyParams}

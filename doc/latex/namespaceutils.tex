@@ -1,0 +1,93 @@
+\hypertarget{namespaceutils}{}\doxysection{utils Module Reference}
+\label{namespaceutils}\index{utils@{utils}}
+
+
+Utilityモジュール  
+
+
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \mbox{\hyperlink{namespaceutils_a976ef6a32a7c5082eafa21c57da5d9d0}{utils\+\_\+set\+\_\+random\+\_\+seed}} (seed)
+\begin{DoxyCompactList}\small\item\em 乱数のシード値を設定する. \end{DoxyCompactList}\item 
+subroutine, public \mbox{\hyperlink{namespaceutils_a26d9e81c0f5f068383b7d46404d7d6fa}{utils\+\_\+rand\+\_\+bm}} (z)
+\begin{DoxyCompactList}\small\item\em Box-\/\+Muller法により正規分布に従う乱数を生成する. \end{DoxyCompactList}\item 
+subroutine, public \mbox{\hyperlink{namespaceutils_a57ae2593fe7800ddc8aeedf3244458db}{utils\+\_\+rand\+\_\+bm2}} (z1, z2)
+\begin{DoxyCompactList}\small\item\em Box-\/\+Muller法により正規分布に従う2つの独立な乱数を生成する. \end{DoxyCompactList}\item 
+real(8) function \mbox{\hyperlink{namespaceutils_ab5223de8ad707e9d66d1a4fb97fb57f2}{pmod}} (a, b)
+\begin{DoxyCompactList}\small\item\em 正剰余を返す. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utilityモジュール 
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceutils_ab5223de8ad707e9d66d1a4fb97fb57f2}\label{namespaceutils_ab5223de8ad707e9d66d1a4fb97fb57f2}} 
+\index{utils@{utils}!pmod@{pmod}}
+\index{pmod@{pmod}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{pmod()}{pmod()}}
+{\footnotesize\ttfamily real(8) function utils\+::pmod (\begin{DoxyParamCaption}\item[{real(8), intent(in)}]{a,  }\item[{real(8), intent(in)}]{b }\end{DoxyParamCaption})}
+
+
+
+正剰余を返す. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a} & 割られる数 \\
+\hline
+\mbox{\texttt{ in}}  & {\em b} & 割る数 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em pmod} & 正剰余 \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{namespaceutils_a26d9e81c0f5f068383b7d46404d7d6fa}\label{namespaceutils_a26d9e81c0f5f068383b7d46404d7d6fa}} 
+\index{utils@{utils}!utils\_rand\_bm@{utils\_rand\_bm}}
+\index{utils\_rand\_bm@{utils\_rand\_bm}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{utils\_rand\_bm()}{utils\_rand\_bm()}}
+{\footnotesize\ttfamily subroutine, public utils\+::utils\+\_\+rand\+\_\+bm (\begin{DoxyParamCaption}\item[{real(8), intent(out)}]{z }\end{DoxyParamCaption})}
+
+
+
+Box-\/\+Muller法により正規分布に従う乱数を生成する. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em z} & 生成した乱数を代入する変数 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceutils_a57ae2593fe7800ddc8aeedf3244458db}\label{namespaceutils_a57ae2593fe7800ddc8aeedf3244458db}} 
+\index{utils@{utils}!utils\_rand\_bm2@{utils\_rand\_bm2}}
+\index{utils\_rand\_bm2@{utils\_rand\_bm2}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{utils\_rand\_bm2()}{utils\_rand\_bm2()}}
+{\footnotesize\ttfamily subroutine, public utils\+::utils\+\_\+rand\+\_\+bm2 (\begin{DoxyParamCaption}\item[{real(8), intent(out)}]{z1,  }\item[{real(8), intent(out)}]{z2 }\end{DoxyParamCaption})}
+
+
+
+Box-\/\+Muller法により正規分布に従う2つの独立な乱数を生成する. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em z1} & 生成した乱数を代入する変数 \\
+\hline
+\mbox{\texttt{ out}}  & {\em z2} & 生成した乱数を代入する変数 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceutils_a976ef6a32a7c5082eafa21c57da5d9d0}\label{namespaceutils_a976ef6a32a7c5082eafa21c57da5d9d0}} 
+\index{utils@{utils}!utils\_set\_random\_seed@{utils\_set\_random\_seed}}
+\index{utils\_set\_random\_seed@{utils\_set\_random\_seed}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{utils\_set\_random\_seed()}{utils\_set\_random\_seed()}}
+{\footnotesize\ttfamily subroutine utils\+::utils\+\_\+set\+\_\+random\+\_\+seed (\begin{DoxyParamCaption}\item[{integer, intent(in), optional}]{seed }\end{DoxyParamCaption})}
+
+
+
+乱数のシード値を設定する. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em seed} & シード値 \\
+\hline
+\end{DoxyParams}

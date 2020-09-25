@@ -1,0 +1,45 @@
+\hypertarget{namespaceprogressbar}{}\doxysection{progressbar Module Reference}
+\label{namespaceprogressbar}\index{progressbar@{progressbar}}
+
+
+プログレスバーモジュール.  
+
+
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine, public \mbox{\hyperlink{namespaceprogressbar_a33df3140d037457668aa39e5db6a7362}{progressbar\+\_\+show}} (current\+\_\+step, max\+\_\+step, n, rewrite)
+\begin{DoxyCompactList}\small\item\em プログレスバーを表示する. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+プログレスバーモジュール. 
+
+次のようなプログレスバーを表示する. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{|\#\#\#\#\#\#\#\#\#\#\#\#               |       5500    /     10000 (10.3 sec)}
+\end{DoxyCode}
+ 
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceprogressbar_a33df3140d037457668aa39e5db6a7362}\label{namespaceprogressbar_a33df3140d037457668aa39e5db6a7362}} 
+\index{progressbar@{progressbar}!progressbar\_show@{progressbar\_show}}
+\index{progressbar\_show@{progressbar\_show}!progressbar@{progressbar}}
+\doxysubsubsection{\texorpdfstring{progressbar\_show()}{progressbar\_show()}}
+{\footnotesize\ttfamily subroutine, public progressbar\+::progressbar\+\_\+show (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{current\+\_\+step,  }\item[{integer, intent(in)}]{max\+\_\+step,  }\item[{integer, intent(in), optional}]{n,  }\item[{logical, intent(in), optional}]{rewrite }\end{DoxyParamCaption})}
+
+
+
+プログレスバーを表示する. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em current\+\_\+step} & 現在のステップ数 \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+\_\+step} & 最大ステップ数 \\
+\hline
+\mbox{\texttt{ in}}  & {\em n} & プログレスバーの長さ (default\+: 20) \\
+\hline
+\mbox{\texttt{ in}}  & {\em rewrite} & プログレスバーを上書き出力するなら.\+true. (default\+: .true.) \\
+\hline
+\end{DoxyParams}

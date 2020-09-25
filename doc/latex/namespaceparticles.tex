@@ -1,0 +1,94 @@
+\hypertarget{namespaceparticles}{}\doxysection{particles Module Reference}
+\label{namespaceparticles}\index{particles@{particles}}
+
+
+粒子に対する処理モジュール.  
+
+
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine, public \mbox{\hyperlink{namespaceparticles_a301ecb6ddf22c9bfc9798ac61b70b495}{particles\+\_\+add\+\_\+uniformly}} (npcl\+\_\+add, ispec)
+\begin{DoxyCompactList}\small\item\em 粒子を空間に一様に配置する. \end{DoxyCompactList}\item 
+subroutine, public \mbox{\hyperlink{namespaceparticles_a03ec3148c087f908d59a9b649ec39a39}{particles\+\_\+add\+\_\+randomly}} (npcl\+\_\+add, ispec, start\+\_\+x, end\+\_\+x)
+\begin{DoxyCompactList}\small\item\em 粒子をランダムに配置する. \end{DoxyCompactList}\item 
+subroutine, public \mbox{\hyperlink{namespaceparticles_a0a33a04526965e35b16a96f690f7cc99}{particles\+\_\+add\+\_\+particle}} (ispec, x, vx, ncycle)
+\begin{DoxyCompactList}\small\item\em 粒子を一つ追加する. \end{DoxyCompactList}\item 
+subroutine, public \mbox{\hyperlink{namespaceparticles_aaad2868395b8383d8fa2740c290cd4aa}{particles\+\_\+sort}}
+\begin{DoxyCompactList}\small\item\em !$>$ \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+粒子に対する処理モジュール. 
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceparticles_a0a33a04526965e35b16a96f690f7cc99}\label{namespaceparticles_a0a33a04526965e35b16a96f690f7cc99}} 
+\index{particles@{particles}!particles\_add\_particle@{particles\_add\_particle}}
+\index{particles\_add\_particle@{particles\_add\_particle}!particles@{particles}}
+\doxysubsubsection{\texorpdfstring{particles\_add\_particle()}{particles\_add\_particle()}}
+{\footnotesize\ttfamily subroutine, public particles\+::particles\+\_\+add\+\_\+particle (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{ispec,  }\item[{real(8), intent(in)}]{x,  }\item[{real(8), intent(in)}]{vx,  }\item[{integer, intent(in)}]{ncycle }\end{DoxyParamCaption})}
+
+
+
+粒子を一つ追加する. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em ispec} & 粒子の種類 \\
+\hline
+\mbox{\texttt{ in}}  & {\em x} & 追加する位置 \\
+\hline
+\mbox{\texttt{ in}}  & {\em vx} & 設定する速度 \\
+\hline
+\mbox{\texttt{ in}}  & {\em ncycle} & 設定する周期境界をまたいだ数 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceparticles_a03ec3148c087f908d59a9b649ec39a39}\label{namespaceparticles_a03ec3148c087f908d59a9b649ec39a39}} 
+\index{particles@{particles}!particles\_add\_randomly@{particles\_add\_randomly}}
+\index{particles\_add\_randomly@{particles\_add\_randomly}!particles@{particles}}
+\doxysubsubsection{\texorpdfstring{particles\_add\_randomly()}{particles\_add\_randomly()}}
+{\footnotesize\ttfamily subroutine, public particles\+::particles\+\_\+add\+\_\+randomly (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{npcl\+\_\+add,  }\item[{integer, intent(in)}]{ispec,  }\item[{real(8), intent(in)}]{start\+\_\+x,  }\item[{real(8), intent(in)}]{end\+\_\+x }\end{DoxyParamCaption})}
+
+
+
+粒子をランダムに配置する. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em npcl\+\_\+add} & 追加する粒子の個数 \\
+\hline
+\mbox{\texttt{ in}}  & {\em ispec} & 粒子の種類 \\
+\hline
+\mbox{\texttt{ in}}  & {\em start\+\_\+x} & 粒子を追加する範囲の初めの位置 \\
+\hline
+\mbox{\texttt{ in}}  & {\em end\+\_\+x} & 粒子を追加する範囲の最後の位置 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceparticles_a301ecb6ddf22c9bfc9798ac61b70b495}\label{namespaceparticles_a301ecb6ddf22c9bfc9798ac61b70b495}} 
+\index{particles@{particles}!particles\_add\_uniformly@{particles\_add\_uniformly}}
+\index{particles\_add\_uniformly@{particles\_add\_uniformly}!particles@{particles}}
+\doxysubsubsection{\texorpdfstring{particles\_add\_uniformly()}{particles\_add\_uniformly()}}
+{\footnotesize\ttfamily subroutine, public particles\+::particles\+\_\+add\+\_\+uniformly (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{npcl\+\_\+add,  }\item[{integer, intent(in)}]{ispec }\end{DoxyParamCaption})}
+
+
+
+粒子を空間に一様に配置する. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em npcl\+\_\+add} & 追加する粒子の個数 \\
+\hline
+\mbox{\texttt{ in}}  & {\em ispec} & 粒子の種類 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceparticles_aaad2868395b8383d8fa2740c290cd4aa}\label{namespaceparticles_aaad2868395b8383d8fa2740c290cd4aa}} 
+\index{particles@{particles}!particles\_sort@{particles\_sort}}
+\index{particles\_sort@{particles\_sort}!particles@{particles}}
+\doxysubsubsection{\texorpdfstring{particles\_sort()}{particles\_sort()}}
+{\footnotesize\ttfamily subroutine, public particles\+::particles\+\_\+sort}
+
+
+
+!$>$ 
+
+粒子位置で粒子のインデックスをソートする. 

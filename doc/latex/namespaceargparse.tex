@@ -1,0 +1,96 @@
+\hypertarget{namespaceargparse}{}\doxysection{argparse Module Reference}
+\label{namespaceargparse}\index{argparse@{argparse}}
+
+
+コマンドライン引数パーサーモジュール.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \mbox{\hyperlink{structargparse_1_1argument}{argument}}
+\begin{DoxyCompactList}\small\item\em 引数情報を格納する構造体 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine, public \mbox{\hyperlink{namespaceargparse_aeb85887b563b50f8c05449d876ef63cc}{argparse\+\_\+init}} (max\+\_\+nargs, description)
+\begin{DoxyCompactList}\small\item\em パーサを初期化する. \end{DoxyCompactList}\item 
+subroutine, public \mbox{\hyperlink{namespaceargparse_a7274c06b811b9e9172cbdfe8075cfd76}{argparse\+\_\+add}} (name, subflagname, description, default)
+\begin{DoxyCompactList}\small\item\em 引数を追加する. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceargparse_a25cb7f11c5526fa2822a7bd99e8a6b34}\label{namespaceargparse_a25cb7f11c5526fa2822a7bd99e8a6b34}} 
+subroutine, public \mbox{\hyperlink{namespaceargparse_a25cb7f11c5526fa2822a7bd99e8a6b34}{argparse\+\_\+parse}}
+\begin{DoxyCompactList}\small\item\em コマンドライン引数をパースする. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceargparse_a8b42e64654862e7925fef38228a90e3d}\label{namespaceargparse_a8b42e64654862e7925fef38228a90e3d}} 
+character(\+:) function, allocatable, public \mbox{\hyperlink{namespaceargparse_a8b42e64654862e7925fef38228a90e3d}{argparse\+\_\+get}} (name)
+\begin{DoxyCompactList}\small\item\em 引数の値を取得する. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+コマンドライン引数パーサーモジュール. 
+
+\begin{DoxyAttention}{Attention}
+不正な引数を指定した場合プログラムを終了する.
+\end{DoxyAttention}
+使用可能な引数の種類 \begin{quote}
+
+\begin{DoxyItemize}
+\item 位置引数 (./program.exe \mbox{[}arg\mbox{]})
+\item オプション引数 (./program.exe --flag \mbox{[}arg\mbox{]})
+\item 省略オプション引数 (./program.exe -\/f \mbox{[}arg\mbox{]}) 
+\end{DoxyItemize}\end{quote}
+
+
+使用例\+:(program.\+exe inputfile.\+txt -\/o outputfile.\+out) 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{character(30) :: input\_filename}}
+\DoxyCodeLine{\textcolor{comment}{call argparse\_init}}
+\DoxyCodeLine{\textcolor{comment}{call argparse\_add('inputfilename', description='input filename')}}
+\DoxyCodeLine{\textcolor{comment}{call argparse\_add('-\/-\/output', subflagname='-\/o', description='output filename')}}
+\DoxyCodeLine{\textcolor{comment}{call argparse\_add('-\/-\/directory', subflagname='-\/d', default='data', description='data directory')}}
+\DoxyCodeLine{\textcolor{comment}{call argparse\_parse}}
+\DoxyCodeLine{}
+\DoxyCodeLine{print *, argparse\_get(\textcolor{stringliteral}{'inputfilename'})  \textcolor{comment}{! "{}inputfile.txt"{}}}
+\DoxyCodeLine{print *, argparse\_get(\textcolor{stringliteral}{'output'})  \textcolor{comment}{! "{}outputfile.out"{}}}
+\DoxyCodeLine{print *, argparse\_get(\textcolor{stringliteral}{'directory'}) ! \textcolor{stringliteral}{"{}data"{}}}
+\end{DoxyCode}
+ 
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceargparse_a7274c06b811b9e9172cbdfe8075cfd76}\label{namespaceargparse_a7274c06b811b9e9172cbdfe8075cfd76}} 
+\index{argparse@{argparse}!argparse\_add@{argparse\_add}}
+\index{argparse\_add@{argparse\_add}!argparse@{argparse}}
+\doxysubsubsection{\texorpdfstring{argparse\_add()}{argparse\_add()}}
+{\footnotesize\ttfamily subroutine, public argparse\+::argparse\+\_\+add (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{name,  }\item[{character($\ast$), intent(in), optional}]{subflagname,  }\item[{character($\ast$), intent(in), optional}]{description,  }\item[{character($\ast$), intent(in), optional}]{default }\end{DoxyParamCaption})}
+
+
+
+引数を追加する. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em name} & 引数の名前 (先頭に--をつけた場合オプション引数として扱う) \\
+\hline
+\mbox{\texttt{ in}}  & {\em subflagname} & オプション引数の省略形 (default\+: none) \\
+\hline
+\mbox{\texttt{ in}}  & {\em description} & 引数の説明 (default\+: none) \\
+\hline
+\mbox{\texttt{ in}}  & {\em default} & デフォルト値 (default\+: none) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceargparse_aeb85887b563b50f8c05449d876ef63cc}\label{namespaceargparse_aeb85887b563b50f8c05449d876ef63cc}} 
+\index{argparse@{argparse}!argparse\_init@{argparse\_init}}
+\index{argparse\_init@{argparse\_init}!argparse@{argparse}}
+\doxysubsubsection{\texorpdfstring{argparse\_init()}{argparse\_init()}}
+{\footnotesize\ttfamily subroutine, public argparse\+::argparse\+\_\+init (\begin{DoxyParamCaption}\item[{integer, intent(in), optional}]{max\+\_\+nargs,  }\item[{character($\ast$), intent(in), optional}]{description }\end{DoxyParamCaption})}
+
+
+
+パーサを初期化する. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em max\+\_\+nargs} & 設定できる引数の最大個数 (default\+: 10個) \\
+\hline
+\mbox{\texttt{ in}}  & {\em description} & プログラムの説明 (default\+: none) \\
+\hline
+\end{DoxyParams}

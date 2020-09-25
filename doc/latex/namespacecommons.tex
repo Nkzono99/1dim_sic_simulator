@@ -1,0 +1,62 @@
+\hypertarget{namespacecommons}{}\doxysection{commons Module Reference}
+\label{namespacecommons}\index{commons@{commons}}
+
+
+共有変数定義モジュール.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \mbox{\hyperlink{structcommons_1_1simplex}{simplex}}
+\begin{DoxyCompactList}\small\item\em シンプレックス構造体 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespacecommons_a35b719342309a1ff6511aa71935638d2}\label{namespacecommons_a35b719342309a1ff6511aa71935638d2}} 
+subroutine \mbox{\hyperlink{namespacecommons_a35b719342309a1ff6511aa71935638d2}{commons\+\_\+init}}
+\begin{DoxyCompactList}\small\item\em 共有変数を初期化する. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespacecommons_a1b3b0855f6ad5c57325248df30de70e8}\label{namespacecommons_a1b3b0855f6ad5c57325248df30de70e8}} 
+real(8), dimension(\+:), allocatable \mbox{\hyperlink{namespacecommons_a1b3b0855f6ad5c57325248df30de70e8}{rho}}
+\begin{DoxyCompactList}\small\item\em 電荷分布 \mbox{[}C\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacecommons_a70dbeb61a507764b05e647f58595f43a}\label{namespacecommons_a70dbeb61a507764b05e647f58595f43a}} 
+real(8), dimension(\+:, \+:), allocatable \mbox{\hyperlink{namespacecommons_a70dbeb61a507764b05e647f58595f43a}{rhospec}}
+\begin{DoxyCompactList}\small\item\em 粒子分布 \mbox{[}super particles\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacecommons_a686e5290d30b71e9ed96b95fd46c5ce4}\label{namespacecommons_a686e5290d30b71e9ed96b95fd46c5ce4}} 
+real(8), dimension(\+:), allocatable \mbox{\hyperlink{namespacecommons_a686e5290d30b71e9ed96b95fd46c5ce4}{phi}}
+\begin{DoxyCompactList}\small\item\em 電位分布 \mbox{[}V\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacecommons_a5861ed61df1440a1d38b033a0895cefd}\label{namespacecommons_a5861ed61df1440a1d38b033a0895cefd}} 
+real(8), dimension(\+:), allocatable \mbox{\hyperlink{namespacecommons_a5861ed61df1440a1d38b033a0895cefd}{phibuf}}
+\begin{DoxyCompactList}\small\item\em 電位分布バッファ \mbox{[}V\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacecommons_a6151aa63046fce2f401640eca951369f}\label{namespacecommons_a6151aa63046fce2f401640eca951369f}} 
+real(8), dimension(\+:), allocatable \mbox{\hyperlink{namespacecommons_a6151aa63046fce2f401640eca951369f}{ex}}
+\begin{DoxyCompactList}\small\item\em 電場分布 \mbox{[}N/C\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacecommons_ae732d0838d111f4bc28aca13448208b4}\label{namespacecommons_ae732d0838d111f4bc28aca13448208b4}} 
+real(8), dimension(\+:, \+:), allocatable \mbox{\hyperlink{namespacecommons_ae732d0838d111f4bc28aca13448208b4}{px}}
+\begin{DoxyCompactList}\small\item\em 粒子位置 \mbox{[}m\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacecommons_ae255dc986228808567b476e29d2795c7}\label{namespacecommons_ae255dc986228808567b476e29d2795c7}} 
+real(8), dimension(\+:, \+:), allocatable \mbox{\hyperlink{namespacecommons_ae255dc986228808567b476e29d2795c7}{pvx}}
+\begin{DoxyCompactList}\small\item\em 粒子速度 \mbox{[}m/s\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacecommons_aa5668203db8562f3bd7b1de3ac549964}\label{namespacecommons_aa5668203db8562f3bd7b1de3ac549964}} 
+integer, dimension(\+:, \+:), allocatable \mbox{\hyperlink{namespacecommons_aa5668203db8562f3bd7b1de3ac549964}{ncycles}}
+\begin{DoxyCompactList}\small\item\em 粒子が周期境界をまたいだ数 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacecommons_ad47cfad9cd641aeac0584b2fbbdafd0d}\label{namespacecommons_ad47cfad9cd641aeac0584b2fbbdafd0d}} 
+type(\mbox{\hyperlink{structcommons_1_1simplex}{simplex}}), dimension(\+:, \+:), allocatable \mbox{\hyperlink{namespacecommons_ad47cfad9cd641aeac0584b2fbbdafd0d}{simplices}}
+\begin{DoxyCompactList}\small\item\em シンプレックス配列 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacecommons_a344784e347591df0f4a2c9ed3a72d06b}\label{namespacecommons_a344784e347591df0f4a2c9ed3a72d06b}} 
+integer, dimension(max\+\_\+nspec) \mbox{\hyperlink{namespacecommons_a344784e347591df0f4a2c9ed3a72d06b}{nsimp}}
+\begin{DoxyCompactList}\small\item\em シンプレックスの個数 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacecommons_ac71ce4258c65cec92a5da30d46d51a99}\label{namespacecommons_ac71ce4258c65cec92a5da30d46d51a99}} 
+integer, dimension(\+:, \+:, \+:), allocatable \mbox{\hyperlink{namespacecommons_ac71ce4258c65cec92a5da30d46d51a99}{pcl2simp}}
+\begin{DoxyCompactList}\small\item\em particleからsimplexへのリンク配列 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+共有変数定義モジュール. 
+
+\begin{DoxyAttention}{Attention}
+初めにcommon\+\_\+init関数を呼び出し、メモリを確保すること. 
+\end{DoxyAttention}

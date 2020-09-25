@@ -66,7 +66,7 @@ def update(i):
     # print('\r{:16.8f} s ({} steps)'.format(t, istep), end='')
     fig.suptitle('{:16.8f} s ({} steps)'.format(t, istep))
     ax1.cla()
-    ax1.set_ylim(np.min(rhos), np.max(rhos))
+    ax1.set_ylim(np.min(rhos[:, ::args.skips, :]), np.max(rhos[:, ::args.skips, :]))
     for ispec in range(nspec):
         ax1.plot(rhos[ispec, i, :], label='rho{}'.format(ispec+1))
     ax1.legend()
@@ -78,7 +78,6 @@ def update(i):
     ax3.set_ylim(np.min(exs), np.max(exs))
     ax3.plot(exs[i, :], label='ex')
     ax3.legend()
-
 
 frames = rhos.shape[1] // args.skips
 ani = anm.FuncAnimation(

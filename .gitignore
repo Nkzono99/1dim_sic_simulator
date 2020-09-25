@@ -44,4 +44,5 @@ build/
 *.gif
 *.png
 *.bat
+.vscode
 !doc/**/*

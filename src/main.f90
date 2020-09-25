@@ -68,10 +68,10 @@ program main
     call status_close
 
 contains
-    
+
     !> @brief シミュレーション設定を出力する.
     subroutine show_simulation_settings
-        print *, '---- Simulation Parameter ----'
+        print *, '---- Simulation Parameter --------'
         print *, 'total steps =', nsteps
         print *, 'initial number of super particles', npcl_init(1:nspec)
         print *, 'max number of super particles', max_npcl
@@ -80,14 +80,18 @@ contains
         print *, 'dt =', dt
         print *, 'dx =', dx
         print *, 'npcl_per_super =', npcl_per_super
-        print *, '------------------------------'
-        print *, '---- Plasma Parameter ----'
+        print *, '----------------------------------'
+        print *, '---- Plasma Parameter ------------'
         print *, 'debye length =', lambda
         print *, 'wpe =', 1/lambda*sqrt(kB*Ts(1)/me)
-        print *, '--------------------------'
-        print *, '---- Parallel Parameter ----'
+        print *, '----------------------------------'
+        print *, '---- Parallel Parameter ----------'
         print *, 'number of thread =', nthreads
-        print *, '----------------------------'
+        print *, '----------------------------------'
+        print *, '---- Refinement Parameter --------'
+        print *, 'refinement interval =', refinement_interval
+        print *, 'refinement threthold =', refinement_threshold
+        print *, '----------------------------------'
     end subroutine
 
     !> @brief 電位が正しく計算されているかチェックする.

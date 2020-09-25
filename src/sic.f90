@@ -18,7 +18,7 @@ module sic
 
 contains
 
-    !> simplexを初期化する.s
+    !> simplexを初期化する.
     subroutine sic_init
         integer ispec
 
@@ -265,7 +265,7 @@ contains
                 d2 = (px(ipcl2, ispec)/dx + 0.5) - i2
 
                 if (i1 == i2) then
-                    rhospec(i1, ispec) = rhospec(i1, ispec) + ldpx/dpx/dx*rate
+                    rhospec(i1, ispec) = rhospec(i1, ispec) + ldpx/dpx*rate
                 else if (i1 < i2) then
                     rhospec(i1, ispec) = rhospec(i1, ispec) + (1 - d1)/dpx*rate
                     do i = i1 + 1, i2 - 1
@@ -342,7 +342,7 @@ contains
         d2 = (px(ipcl2, ispec)/dx + 0.5) - i2
 
         if (i1 == i2) then
-            ex_p = ldpx/dpx/dx*ex(i1)
+            ex_p = ldpx/dpx*ex(i1)
         else if (i1 < i2) then
             ex_p = (1 - d1)/dpx*ex(i1)
             do i = i1 + 1, i2 - 1

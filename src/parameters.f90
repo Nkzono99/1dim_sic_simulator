@@ -87,7 +87,7 @@ module parameters
     !> 一つのsimplexの質量
     real(8) :: ms(max_nspec)
 
-    !> refinementを実行する間隔
+    !> refinementを実行する間隔(0ならrefinementを行わない)
     integer :: refinement_interval = 0
     !> refinementを実行するしきい値 [grid]
     real(8) :: refinement_threshold = 1

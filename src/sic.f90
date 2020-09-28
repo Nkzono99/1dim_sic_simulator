@@ -23,7 +23,7 @@ contains
         integer ispec
 
         do ispec = 1, nspec
-            call particles_add_uniformly(npcl_init(ispec), ispec)
+            call particles_distribute(npcl_init(ispec), ispec, x_mode='uniform', vx_mode='normal')
         end do
 
         do ispec = 1, nspec

@@ -357,7 +357,13 @@ contains
                 isimp1 = pcl2simp(ipcl, ispec, 1)
                 isimp2 = pcl2simp(ipcl, ispec, 2)
 
-                ex_p = 0.5*(calc_ex(isimp1, ispec) + calc_ex(isimp2, ispec))
+                ex_p = 0
+                if (isimp1 /= -1) then
+                    ex_p = ex_p + 0.5*calc_ex(isimp1, ispec)
+                end if
+                if (isimp2 /= -1) then
+                    ex_p = ex_p + 0.5*calc_ex(isimp2, ispec)
+                end if
 
                 pvx(ipcl, ispec) = pvx(ipcl, ispec) + dt*qs(ispec)/ms(ispec)*ex_p
             end do

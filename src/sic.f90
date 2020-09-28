@@ -258,8 +258,13 @@ contains
         ! グリッド全体に足す値を格納する変数
         real(8) :: all_sum
 
+        !$omp parallel
         do ispec = 1, nspec
             all_sum = 0
+            !$omp do &
+            !$omp private(ipcl1, ipcl2, rate, offset1, offset2, px1, px2, lpx1, lpx2, dpx, ldpx, dcycle, il, dl, ir, dr) &
+            !$omp reduction(+: all_sum) &
+            !$omp reduction(+: rhospec)
             do isimp = 1, nsimp(ispec)
                 ipcl1 = simplices(isimp, ispec)%ipcl1
                 ipcl2 = simplices(isimp, ispec)%ipcl2
@@ -339,11 +344,15 @@ contains
                     end if
                 end if
             end do
+            !$omp end do
 
+            !$omp do
             do i = 1, ngrid
                 rhospec(i, ispec) = rhospec(i, ispec) + all_sum
             end do
+            !$omp end do
         end do
+        !$omp end parallel
     end subroutine
 
     !> @brief トレーサー位置・速度を更新する.
@@ -352,7 +361,9 @@ contains
         integer :: isimp1, isimp2
         real(8) :: ex_p
 
+        !$omp parallel private(ispec)
         do ispec = 1, nspec
+            !$omp do private(isimp1, isimp2, ex_p)
             do ipcl = 1, npcl(ispec)
                 isimp1 = pcl2simp(ipcl, ispec, 1)
                 isimp2 = pcl2simp(ipcl, ispec, 2)
@@ -367,11 +378,15 @@ contains
 
                 pvx(ipcl, ispec) = pvx(ipcl, ispec) + dt*qs(ispec)/ms(ispec)*ex_p
             end do
+            !$omp end do
 
+            !$omp do
             do ipcl = 1, npcl(ispec)
                 px(ipcl, ispec) = px(ipcl, ispec) + dt*pvx(ipcl, ispec)
             end do
+            !$omp end do
         end do
+        !$omp end parallel
 
         call boundary_correct_pcl
     end subroutine

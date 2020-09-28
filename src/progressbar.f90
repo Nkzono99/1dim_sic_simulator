@@ -12,8 +12,7 @@ module progressbar
     !> 初めにprogressbar_showが呼ばれたときの時間
     real(8) :: start_time = -1
 
-    private start_time
-    private time
+    private
 
     public progressbar_show
 

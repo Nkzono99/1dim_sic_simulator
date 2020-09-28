@@ -4,8 +4,7 @@ module status
     use commons
     implicit none
 
-    private write_electrostatic_energy, write_kinetic_energy
-    private write_distance_between_tracers, write_npcl
+    private
 
     public status_start, status_write, status_close
 

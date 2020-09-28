@@ -6,7 +6,7 @@ module particles
     use utils
     implicit none
 
-    private swap_particles, sort_for_species
+    private
 
     public particles_add_particle
     public particles_add_uniformly, particles_add_randomly

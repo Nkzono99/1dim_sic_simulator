@@ -5,11 +5,7 @@ module boundary
 
     implicit none
 
-    private correct_pcl_periodic, correct_rho_periodic
-    private correct_phi_periodic, correct_ex_periodic
-
-    private correct_pcl_reflective, correct_rho_reflective
-    private correct_phi_reflective, correct_ex_reflective
+    private
 
     public boundary_correct_pcl, boundary_correct_rho
     public boundary_correct_phi, boundary_correct_ex

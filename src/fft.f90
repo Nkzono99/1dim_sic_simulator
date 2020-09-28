@@ -34,9 +34,7 @@ module fft
     !> fftを行う際の一時的なバッファ
     complex(8), allocatable :: fft_buf2(:)
 
-    private j, pi
-    private fft_buf2
-    private sub_transform, find_near_pow2
+    private
 
     public fft_buf
     public fft_initialized

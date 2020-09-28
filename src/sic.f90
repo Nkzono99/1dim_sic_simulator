@@ -4,12 +4,11 @@ module sic
     use commons
     use utils
     use particles
+    use boundary
 
     implicit none
 
-    private create_mesh
-    private sic_add_simplex, sic_split_simplex
-    private calc_ex, sic_scatter_b0
+    private
 
     public sic_init
     public sic_correct_temprature

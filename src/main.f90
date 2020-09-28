@@ -8,6 +8,7 @@ program main
     use argparse
     use progressbar
     use sic
+    use utils
 
     implicit none
 

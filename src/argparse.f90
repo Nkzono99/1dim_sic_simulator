@@ -54,12 +54,12 @@ module argparse
     !> 引数配列
     type(argument), allocatable :: arguments(:)
 
-    private argument
-    private none_value, nargs, program_description, arguments
-    private argparse_show_usage, argparse_show_help
-    private argparse_set_option_arg, argparse_set_positional_arg
+    private
 
-    public argparse_init, argparse_add, argparse_parse, argparse_get
+    public argparse_init
+    public argparse_add
+    public argparse_parse
+    public argparse_get
 
 contains
 

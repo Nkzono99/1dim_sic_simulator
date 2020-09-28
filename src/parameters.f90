@@ -95,6 +95,8 @@ module parameters
     !> スレッド数 (プログラム実行時に格納される)
     integer :: nthreads = 1
 
+    private
+
     public eps0, kB, e, me, pi
     public max_nspec
     public random_seed
@@ -105,7 +107,8 @@ module parameters
     public solve_method
     public error_limit, max_loop_count
     public find_exact_solution, convergence_judge_interval
-    public npcl_init, max_npcl, ngrid, dx, dt
+    public npcl_init, max_npcl, npcl
+    public ngrid, dx, dt
     public lambda
     public nspec, q_ratio, m_ratio, Ts
     public npcl_per_super, qs, ms

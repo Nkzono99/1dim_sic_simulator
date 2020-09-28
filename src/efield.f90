@@ -6,7 +6,7 @@ module efield
     use fft
     implicit none
 
-    private calc_phi, calc_ex
+    private
 
     public efield_update
 

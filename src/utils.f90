@@ -5,7 +5,9 @@ module utils
     !> 円周率
     real, parameter :: pi = 4.0*atan(1.0)
 
-    private pi
+    private
+
+    public utils_set_random_seed
     public utils_rand_bm, utils_rand_bm2
     public utils_pmod
 

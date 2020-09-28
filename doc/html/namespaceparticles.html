@@ -74,17 +74,15 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions/Subroutines</h2></td></tr>
-<tr class="memitem:a301ecb6ddf22c9bfc9798ac61b70b495"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparticles.html#a301ecb6ddf22c9bfc9798ac61b70b495">particles_add_uniformly</a> (npcl_add, ispec)</td></tr>
-<tr class="memdesc:a301ecb6ddf22c9bfc9798ac61b70b495"><td class="mdescLeft">&#160;</td><td class="mdescRight">粒子を空間に一様に配置する.  <a href="namespaceparticles.html#a301ecb6ddf22c9bfc9798ac61b70b495">More...</a><br /></td></tr>
-<tr class="separator:a301ecb6ddf22c9bfc9798ac61b70b495"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03ec3148c087f908d59a9b649ec39a39"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparticles.html#a03ec3148c087f908d59a9b649ec39a39">particles_add_randomly</a> (npcl_add, ispec, start_x, end_x)</td></tr>
-<tr class="memdesc:a03ec3148c087f908d59a9b649ec39a39"><td class="mdescLeft">&#160;</td><td class="mdescRight">粒子をランダムに配置する.  <a href="namespaceparticles.html#a03ec3148c087f908d59a9b649ec39a39">More...</a><br /></td></tr>
-<tr class="separator:a03ec3148c087f908d59a9b649ec39a39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcbc6024ff4907d476e559ae16b4c8eb"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparticles.html#abcbc6024ff4907d476e559ae16b4c8eb">particles_distribute</a> (npcl_add, ispec, x_mode, vx_mode, x_start, x_end, x_mean, x_std, vx_start, vx_end, vx_mean, vx_std)</td></tr>
+<tr class="memdesc:abcbc6024ff4907d476e559ae16b4c8eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">粒子を分配する.  <a href="namespaceparticles.html#abcbc6024ff4907d476e559ae16b4c8eb">More...</a><br /></td></tr>
+<tr class="separator:abcbc6024ff4907d476e559ae16b4c8eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a33a04526965e35b16a96f690f7cc99"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparticles.html#a0a33a04526965e35b16a96f690f7cc99">particles_add_particle</a> (ispec, x, vx, ncycle)</td></tr>
 <tr class="memdesc:a0a33a04526965e35b16a96f690f7cc99"><td class="mdescLeft">&#160;</td><td class="mdescRight">粒子を一つ追加する.  <a href="namespaceparticles.html#a0a33a04526965e35b16a96f690f7cc99">More...</a><br /></td></tr>
 <tr class="separator:a0a33a04526965e35b16a96f690f7cc99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaad2868395b8383d8fa2740c290cd4aa"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparticles.html#aaad2868395b8383d8fa2740c290cd4aa">particles_sort</a></td></tr>
-<tr class="memdesc:aaad2868395b8383d8fa2740c290cd4aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">!&gt;  <a href="namespaceparticles.html#aaad2868395b8383d8fa2740c290cd4aa">More...</a><br /></td></tr>
+<tr class="memitem:aaad2868395b8383d8fa2740c290cd4aa"><td class="memItemLeft" align="right" valign="top"><a id="aaad2868395b8383d8fa2740c290cd4aa"></a>
+subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparticles.html#aaad2868395b8383d8fa2740c290cd4aa">particles_sort</a></td></tr>
+<tr class="memdesc:aaad2868395b8383d8fa2740c290cd4aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">粒子位置で粒子のインデックスをソートする. <br /></td></tr>
 <tr class="separator:aaad2868395b8383d8fa2740c290cd4aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -141,14 +139,14 @@ Functions/Subroutines</h2></td></tr>
 
 </div>
 </div>
-<a id="a03ec3148c087f908d59a9b649ec39a39"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03ec3148c087f908d59a9b649ec39a39">&#9670;&nbsp;</a></span>particles_add_randomly()</h2>
+<a id="abcbc6024ff4907d476e559ae16b4c8eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcbc6024ff4907d476e559ae16b4c8eb">&#9670;&nbsp;</a></span>particles_distribute()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">subroutine, public particles::particles_add_randomly </td>
+          <td class="memname">subroutine, public particles::particles_distribute </td>
           <td>(</td>
           <td class="paramtype">integer, intent(in)&#160;</td>
           <td class="paramname"><em>npcl_add</em>, </td>
@@ -162,14 +160,62 @@ Functions/Subroutines</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">real(8), intent(in)&#160;</td>
-          <td class="paramname"><em>start_x</em>, </td>
+          <td class="paramtype">character(*), intent(in)&#160;</td>
+          <td class="paramname"><em>x_mode</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">real(8), intent(in)&#160;</td>
-          <td class="paramname"><em>end_x</em>&#160;</td>
+          <td class="paramtype">character(*), intent(in)&#160;</td>
+          <td class="paramname"><em>vx_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(8), intent(in), optional&#160;</td>
+          <td class="paramname"><em>x_start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(8), intent(in), optional&#160;</td>
+          <td class="paramname"><em>x_end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(8), intent(in), optional&#160;</td>
+          <td class="paramname"><em>x_mean</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(8), intent(in), optional&#160;</td>
+          <td class="paramname"><em>x_std</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(8), intent(in), optional&#160;</td>
+          <td class="paramname"><em>vx_start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(8), intent(in), optional&#160;</td>
+          <td class="paramname"><em>vx_end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(8), intent(in), optional&#160;</td>
+          <td class="paramname"><em>vx_mean</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(8), intent(in), optional&#160;</td>
+          <td class="paramname"><em>vx_std</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -179,70 +225,31 @@ Functions/Subroutines</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>粒子をランダムに配置する. </p>
+<p>粒子を分配する. </p>
+<blockquote class="doxtable">
+<p>分配方法</p><ul>
+<li>'uniform' : startからendまでの範囲に一様に分配する</li>
+<li>'random' : startからendまでの範囲にランダムに分配する</li>
+<li>'normal' : 平均mean, 分散stdの正規分布に従うように分配する </li>
+</ul>
+</blockquote>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">npcl_add</td><td>追加する粒子の個数 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ispec</td><td>粒子の種類 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">start_x</td><td>粒子を追加する範囲の初めの位置 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">end_x</td><td>粒子を追加する範囲の最後の位置 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">npcl_add</td><td>追加する粒子数 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ispec</td><td>追加する粒子の種類 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x_mode</td><td>位置の分配方法('uniform', 'random', 'normal') </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vx_mode</td><td>速度の分配方法('uniform', 'random', 'normal') </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x_start</td><td>初めの位置 (default: 0) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x_end</td><td>最後の位置 (default: ngrid*dx) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x_mean</td><td>平均位置 (default: 0.5*ngrid*dx) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x_std</td><td>位置の分散 (default: dx) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vx_start</td><td>最小速度 (default: -1) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vx_end</td><td>最大速度 (default: 1) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vx_mean</td><td>平均速度 (default: 0) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vx_std</td><td>速度の分散 (default: 1) </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a301ecb6ddf22c9bfc9798ac61b70b495"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a301ecb6ddf22c9bfc9798ac61b70b495">&#9670;&nbsp;</a></span>particles_add_uniformly()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">subroutine, public particles::particles_add_uniformly </td>
-          <td>(</td>
-          <td class="paramtype">integer, intent(in)&#160;</td>
-          <td class="paramname"><em>npcl_add</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">integer, intent(in)&#160;</td>
-          <td class="paramname"><em>ispec</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>粒子を空間に一様に配置する. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">npcl_add</td><td>追加する粒子の個数 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ispec</td><td>粒子の種類 </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="aaad2868395b8383d8fa2740c290cd4aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaad2868395b8383d8fa2740c290cd4aa">&#9670;&nbsp;</a></span>particles_sort()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">subroutine, public particles::particles_sort</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>!&gt; </p>
-<p>粒子位置で粒子のインデックスをソートする. </p>
 
 </div>
 </div>

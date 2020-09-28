@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['random_5fseed_211',['random_seed',['../namespaceparameters.html#a2c70a15613816409aa4490ad5131cc0e',1,'parameters']]],
-  ['rate_212',['rate',['../structcommons_1_1simplex.html#a9b2578ceda8bd90aa11d8b467ad96f9d',1,'commons::simplex']]],
-  ['refinement_5finterval_213',['refinement_interval',['../namespaceparameters.html#ada61f5d60d03aebac7ed807f924af868',1,'parameters']]],
-  ['refinement_5fthreshold_214',['refinement_threshold',['../namespaceparameters.html#a8302b40667dcbcc4e08fbb0f7d6a79f5',1,'parameters']]],
-  ['rho_215',['rho',['../namespacecommons.html#a1b3b0855f6ad5c57325248df30de70e8',1,'commons']]],
-  ['rhospec_216',['rhospec',['../namespacecommons.html#a70dbeb61a507764b05e647f58595f43a',1,'commons']]]
+  ['pcl2simp_205',['pcl2simp',['../namespacecommons.html#ac71ce4258c65cec92a5da30d46d51a99',1,'commons']]],
+  ['phi_206',['phi',['../namespacecommons.html#a686e5290d30b71e9ed96b95fd46c5ce4',1,'commons']]],
+  ['phibuf_207',['phibuf',['../namespacecommons.html#a5861ed61df1440a1d38b033a0895cefd',1,'commons']]],
+  ['pi_208',['pi',['../namespacefft.html#a6c4581f9ba6eb35148ae5212f70a4117',1,'fft::pi()'],['../namespaceparameters.html#a6c0362eae5a266d29018ce266b2bcb55',1,'parameters::pi()'],['../namespaceutils.html#a174b5f484090d5a3c67a60eaee38dd4e',1,'utils::pi()']]],
+  ['program_5fdescription_209',['program_description',['../namespaceargparse.html#aad837ace5cf0d4f073b3db9d672747b7',1,'argparse']]],
+  ['pvx_210',['pvx',['../namespacecommons.html#ae255dc986228808567b476e29d2795c7',1,'commons']]],
+  ['px_211',['px',['../namespacecommons.html#ae732d0838d111f4bc28aca13448208b4',1,'commons']]]
 ];

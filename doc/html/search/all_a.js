@@ -1,13 +1,9 @@
 var searchData=
 [
-  ['name_49',['name',['../structargparse_1_1argument.html#addfd7d43f0c1edc84e3dc6b9ad77de45',1,'argparse::argument']]],
-  ['ncycles_50',['ncycles',['../namespacecommons.html#aa5668203db8562f3bd7b1de3ac549964',1,'commons']]],
-  ['ngrid_51',['ngrid',['../namespaceparameters.html#a1eb0ee3801e2cfbb11b555688923e8ec',1,'parameters']]],
-  ['npcl_52',['npcl',['../namespaceparameters.html#a2c180b386f7fb11064a4423455d94fb0',1,'parameters']]],
-  ['npcl_5finit_53',['npcl_init',['../namespaceparameters.html#ad77ee2eac1442a04cf861e8d4b50f01b',1,'parameters']]],
-  ['npcl_5fper_5fsuper_54',['npcl_per_super',['../namespaceparameters.html#a9c4b457c04950711d04db121cb3e2054',1,'parameters']]],
-  ['nsimp_55',['nsimp',['../namespacecommons.html#a344784e347591df0f4a2c9ed3a72d06b',1,'commons']]],
-  ['nspec_56',['nspec',['../namespaceparameters.html#af7132c40ae02bc265a40546968b07b79',1,'parameters']]],
-  ['nsteps_57',['nsteps',['../namespaceparameters.html#a4c2e26739d4053828a07e3f5de9baae4',1,'parameters']]],
-  ['nthreads_58',['nthreads',['../namespaceparameters.html#a5e6c8b2ca772fbe6674bbaf3119a95a9',1,'parameters']]]
+  ['m_5fratio_42',['m_ratio',['../namespaceparameters.html#ac10efa6fde0c4ef1df09d79d467ad603',1,'parameters']]],
+  ['max_5floop_5fcount_43',['max_loop_count',['../namespaceparameters.html#a284421460b1e6032c73b649413a85b22',1,'parameters']]],
+  ['max_5fnpcl_44',['max_npcl',['../namespaceparameters.html#a2c661e9f0ecb692fa28dd0fbd480f7c9',1,'parameters']]],
+  ['max_5fnspec_45',['max_nspec',['../namespaceparameters.html#a402ac2b1acba21a0e9487023da144ca0',1,'parameters']]],
+  ['me_46',['me',['../namespaceparameters.html#a184eec95b1cfbae0f1819df05e12edbf',1,'parameters']]],
+  ['ms_47',['ms',['../namespaceparameters.html#a67ef4f76de2b0ae9d021c0e21cd6eae5',1,'parameters']]]
 ];

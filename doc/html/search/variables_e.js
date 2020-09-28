@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['simplices_217',['simplices',['../namespacecommons.html#ad47cfad9cd641aeac0584b2fbbdafd0d',1,'commons']]],
-  ['solve_5fmethod_218',['solve_method',['../namespaceparameters.html#a122b7c96650d0fac8398400bbae9ccb3',1,'parameters']]],
-  ['subflagname_219',['subflagname',['../structargparse_1_1argument.html#a6675eb0d21aa304f2ef7898cee6b873c',1,'argparse::argument']]]
+  ['q_5fratio_212',['q_ratio',['../namespaceparameters.html#acb3e2891fe06f9f5da0a658adeebbc46',1,'parameters']]],
+  ['qs_213',['qs',['../namespaceparameters.html#a71f6c117b2ba61c174deb48e4a54f179',1,'parameters']]]
 ];

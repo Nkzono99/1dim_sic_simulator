@@ -87,6 +87,14 @@ Functions/Subroutines</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:ab7659b14f373c336d71c072900e05009"><td class="memItemLeft" align="right" valign="top"><a id="ab7659b14f373c336d71c072900e05009"></a>
+complex(8), parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefft.html#ab7659b14f373c336d71c072900e05009">j</a> = (0.0, 1.0)</td></tr>
+<tr class="memdesc:ab7659b14f373c336d71c072900e05009"><td class="mdescLeft">&#160;</td><td class="mdescRight">虚数単位 <br /></td></tr>
+<tr class="separator:ab7659b14f373c336d71c072900e05009"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c4581f9ba6eb35148ae5212f70a4117"><td class="memItemLeft" align="right" valign="top"><a id="a6c4581f9ba6eb35148ae5212f70a4117"></a>
+real(8), parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefft.html#a6c4581f9ba6eb35148ae5212f70a4117">pi</a> = 4.0*atan(1.0d0)</td></tr>
+<tr class="memdesc:a6c4581f9ba6eb35148ae5212f70a4117"><td class="mdescLeft">&#160;</td><td class="mdescRight">円周率 <br /></td></tr>
+<tr class="separator:a6c4581f9ba6eb35148ae5212f70a4117"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abec5415ac95142f19f0fef21485e5394"><td class="memItemLeft" align="right" valign="top"><a id="abec5415ac95142f19f0fef21485e5394"></a>
 logical, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefft.html#abec5415ac95142f19f0fef21485e5394">fft_initialized</a> = .false.</td></tr>
 <tr class="memdesc:abec5415ac95142f19f0fef21485e5394"><td class="mdescLeft">&#160;</td><td class="mdescRight">fftモジュールが初期化されているか <br /></td></tr>
@@ -95,6 +103,10 @@ logical, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el"
 complex(8), dimension(:), allocatable, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefft.html#af8e11378337dd718e26573d62135878b">fft_buf</a></td></tr>
 <tr class="memdesc:af8e11378337dd718e26573d62135878b"><td class="mdescLeft">&#160;</td><td class="mdescRight">fftを行う配列 <br /></td></tr>
 <tr class="separator:af8e11378337dd718e26573d62135878b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a395aa3ffac08919d0e717adb8bc782d8"><td class="memItemLeft" align="right" valign="top"><a id="a395aa3ffac08919d0e717adb8bc782d8"></a>
+complex(8), dimension(:), allocatable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefft.html#a395aa3ffac08919d0e717adb8bc782d8">fft_buf2</a></td></tr>
+<tr class="memdesc:a395aa3ffac08919d0e717adb8bc782d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">fftを行う際の一時的なバッファ <br /></td></tr>
+<tr class="separator:a395aa3ffac08919d0e717adb8bc782d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>2の乗数長の配列に対する1次元FFT(Fast Fourier Transform)モジュール. </p>

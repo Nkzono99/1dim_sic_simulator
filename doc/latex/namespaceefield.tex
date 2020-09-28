@@ -10,36 +10,8 @@
 \item 
 \mbox{\Hypertarget{namespaceefield_aa3e1da626e85f46b666ff7edf547aea5}\label{namespaceefield_aa3e1da626e85f46b666ff7edf547aea5}} 
 subroutine, public \mbox{\hyperlink{namespaceefield_aa3e1da626e85f46b666ff7edf547aea5}{efield\+\_\+update}}
-\begin{DoxyCompactList}\small\item\em 電場と電位を更新する. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{namespaceefield_ac528cd9ba637bdbf306ab48e7d26b5af}\label{namespaceefield_ac528cd9ba637bdbf306ab48e7d26b5af}} 
-subroutine \mbox{\hyperlink{namespaceefield_ac528cd9ba637bdbf306ab48e7d26b5af}{calc\+\_\+phi\+\_\+fft}}
-\begin{DoxyCompactList}\small\item\em F\+F\+Tを用いてポアソン方程式を解き電位を計算する. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{namespaceefield_af48fa06ec24555e895440abc8eb8e75a}\label{namespaceefield_af48fa06ec24555e895440abc8eb8e75a}} 
-subroutine \mbox{\hyperlink{namespaceefield_af48fa06ec24555e895440abc8eb8e75a}{calc\+\_\+phi\+\_\+iterative}}
-\begin{DoxyCompactList}\small\item\em 反復法(ガウスザイデル法)を用いてポアソン方程式を解き電位を計算する. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{namespaceefield_a7b376693279756bd81a45ef990906b93}\label{namespaceefield_a7b376693279756bd81a45ef990906b93}} 
-logical function \mbox{\hyperlink{namespaceefield_a7b376693279756bd81a45ef990906b93}{converged}} ()
-\begin{DoxyCompactList}\small\item\em 相対誤差により収束判定を行う. \end{DoxyCompactList}\item 
-logical function \mbox{\hyperlink{namespaceefield_a124c572d4ce31325ed92daaf6b8a83d6}{exactly\+\_\+converged}} (b\+\_\+norm)
-\begin{DoxyCompactList}\small\item\em 真の解との残差により収束判定を行う. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em 電場と電位を更新する. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 電場・電位に対する処理モジュール. 
-
-\doxysubsection{Function/\+Subroutine Documentation}
-\mbox{\Hypertarget{namespaceefield_a124c572d4ce31325ed92daaf6b8a83d6}\label{namespaceefield_a124c572d4ce31325ed92daaf6b8a83d6}} 
-\index{efield@{efield}!exactly\_converged@{exactly\_converged}}
-\index{exactly\_converged@{exactly\_converged}!efield@{efield}}
-\doxysubsubsection{\texorpdfstring{exactly\_converged()}{exactly\_converged()}}
-{\footnotesize\ttfamily logical function efield\+::exactly\+\_\+converged (\begin{DoxyParamCaption}\item[{real(8), intent(in)}]{b\+\_\+norm }\end{DoxyParamCaption})}
-
-
-
-真の解との残差により収束判定を行う. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em b\+\_\+norm} & ノルム \\
-\hline
-\end{DoxyParams}

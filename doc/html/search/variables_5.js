@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['ipcl1_174',['ipcl1',['../structcommons_1_1simplex.html#ac342ada7e0a8ad8c324434b3a5763ec3',1,'commons::simplex']]],
-  ['ipcl2_175',['ipcl2',['../structcommons_1_1simplex.html#a220193df1706ae8c3323d72c83f8ca42',1,'commons::simplex']]],
-  ['is_5foption_176',['is_option',['../structargparse_1_1argument.html#a15694087f9f24f5fab214e23b1ae07d7',1,'argparse::argument']]]
+  ['fft_5fbuf_168',['fft_buf',['../namespacefft.html#af8e11378337dd718e26573d62135878b',1,'fft']]],
+  ['fft_5fbuf2_169',['fft_buf2',['../namespacefft.html#a395aa3ffac08919d0e717adb8bc782d8',1,'fft']]],
+  ['fft_5finitialized_170',['fft_initialized',['../namespacefft.html#abec5415ac95142f19f0fef21485e5394',1,'fft']]],
+  ['find_5fexact_5fsolution_171',['find_exact_solution',['../namespaceparameters.html#a62b8e45eafcecfeda90b0fb00ce5c225',1,'parameters']]],
+  ['flagname_172',['flagname',['../structargparse_1_1argument.html#af1ca10abc83d0af45b13012bc2b59b91',1,'argparse::argument']]]
 ];

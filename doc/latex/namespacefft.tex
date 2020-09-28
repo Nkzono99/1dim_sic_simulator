@@ -17,12 +17,21 @@ subroutine, public \mbox{\hyperlink{namespacefft_af99727e7e01fc39c26ddbba6b31b79
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{namespacefft_ab7659b14f373c336d71c072900e05009}\label{namespacefft_ab7659b14f373c336d71c072900e05009}} 
+complex(8), parameter \mbox{\hyperlink{namespacefft_ab7659b14f373c336d71c072900e05009}{j}} = (0.\+0, 1.\+0)
+\begin{DoxyCompactList}\small\item\em 虚数単位 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacefft_a6c4581f9ba6eb35148ae5212f70a4117}\label{namespacefft_a6c4581f9ba6eb35148ae5212f70a4117}} 
+real(8), parameter \mbox{\hyperlink{namespacefft_a6c4581f9ba6eb35148ae5212f70a4117}{pi}} = 4.\+0$\ast$atan(1.\+0d0)
+\begin{DoxyCompactList}\small\item\em 円周率 \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespacefft_abec5415ac95142f19f0fef21485e5394}\label{namespacefft_abec5415ac95142f19f0fef21485e5394}} 
 logical, public \mbox{\hyperlink{namespacefft_abec5415ac95142f19f0fef21485e5394}{fft\+\_\+initialized}} = .false.
 \begin{DoxyCompactList}\small\item\em fftモジュールが初期化されているか \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespacefft_af8e11378337dd718e26573d62135878b}\label{namespacefft_af8e11378337dd718e26573d62135878b}} 
 complex(8), dimension(\+:), allocatable, public \mbox{\hyperlink{namespacefft_af8e11378337dd718e26573d62135878b}{fft\+\_\+buf}}
-\begin{DoxyCompactList}\small\item\em fftを行う配列 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em fftを行う配列 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacefft_a395aa3ffac08919d0e717adb8bc782d8}\label{namespacefft_a395aa3ffac08919d0e717adb8bc782d8}} 
+complex(8), dimension(\+:), allocatable \mbox{\hyperlink{namespacefft_a395aa3ffac08919d0e717adb8bc782d8}{fft\+\_\+buf2}}
+\begin{DoxyCompactList}\small\item\em fftを行う際の一時的なバッファ \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

@@ -46,3 +46,4 @@ build/
 *.bat
 .vscode
 !doc/**/*
+*.bak

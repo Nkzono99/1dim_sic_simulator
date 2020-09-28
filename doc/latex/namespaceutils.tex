@@ -8,7 +8,7 @@ Utilityモジュール
 \doxysubsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
-subroutine \mbox{\hyperlink{namespaceutils_a976ef6a32a7c5082eafa21c57da5d9d0}{utils\+\_\+set\+\_\+random\+\_\+seed}} (seed)
+subroutine, public \mbox{\hyperlink{namespaceutils_a8f8eeb2c7a9427a71aac3c60d8db5431}{utils\+\_\+set\+\_\+random\+\_\+seed}} (seed)
 \begin{DoxyCompactList}\small\item\em 乱数のシード値を設定する. \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespaceutils_a26d9e81c0f5f068383b7d46404d7d6fa}{utils\+\_\+rand\+\_\+bm}} (z)
 \begin{DoxyCompactList}\small\item\em Box-\/\+Muller法により正規分布に従う乱数を生成する. \end{DoxyCompactList}\item 
@@ -16,6 +16,12 @@ subroutine, public \mbox{\hyperlink{namespaceutils_a57ae2593fe7800ddc8aeedf32444
 \begin{DoxyCompactList}\small\item\em Box-\/\+Muller法により正規分布に従う2つの独立な乱数を生成する. \end{DoxyCompactList}\item 
 real(8) function, public \mbox{\hyperlink{namespaceutils_a81288a1b11f3f3e850053227d2333e4f}{utils\+\_\+pmod}} (a, b)
 \begin{DoxyCompactList}\small\item\em 正剰余を返す. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceutils_a174b5f484090d5a3c67a60eaee38dd4e}\label{namespaceutils_a174b5f484090d5a3c67a60eaee38dd4e}} 
+real, parameter \mbox{\hyperlink{namespaceutils_a174b5f484090d5a3c67a60eaee38dd4e}{pi}} = 4.\+0$\ast$atan(1.\+0)
+\begin{DoxyCompactList}\small\item\em 円周率 \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -76,11 +82,11 @@ Box-\/\+Muller法により正規分布に従う2つの独立な乱数を生成�
 \mbox{\texttt{ out}}  & {\em z2} & 生成した乱数を代入する変数 \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{namespaceutils_a976ef6a32a7c5082eafa21c57da5d9d0}\label{namespaceutils_a976ef6a32a7c5082eafa21c57da5d9d0}} 
+\mbox{\Hypertarget{namespaceutils_a8f8eeb2c7a9427a71aac3c60d8db5431}\label{namespaceutils_a8f8eeb2c7a9427a71aac3c60d8db5431}} 
 \index{utils@{utils}!utils\_set\_random\_seed@{utils\_set\_random\_seed}}
 \index{utils\_set\_random\_seed@{utils\_set\_random\_seed}!utils@{utils}}
 \doxysubsubsection{\texorpdfstring{utils\_set\_random\_seed()}{utils\_set\_random\_seed()}}
-{\footnotesize\ttfamily subroutine utils\+::utils\+\_\+set\+\_\+random\+\_\+seed (\begin{DoxyParamCaption}\item[{integer, intent(in), optional}]{seed }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily subroutine, public utils\+::utils\+\_\+set\+\_\+random\+\_\+seed (\begin{DoxyParamCaption}\item[{integer, intent(in), optional}]{seed }\end{DoxyParamCaption})}
 
 
 

@@ -8,14 +8,13 @@
 \doxysubsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
-subroutine, public \mbox{\hyperlink{namespaceparticles_a301ecb6ddf22c9bfc9798ac61b70b495}{particles\+\_\+add\+\_\+uniformly}} (npcl\+\_\+add, ispec)
-\begin{DoxyCompactList}\small\item\em 粒子を空間に一様に配置する. \end{DoxyCompactList}\item 
-subroutine, public \mbox{\hyperlink{namespaceparticles_a03ec3148c087f908d59a9b649ec39a39}{particles\+\_\+add\+\_\+randomly}} (npcl\+\_\+add, ispec, start\+\_\+x, end\+\_\+x)
-\begin{DoxyCompactList}\small\item\em 粒子をランダムに配置する. \end{DoxyCompactList}\item 
+subroutine, public \mbox{\hyperlink{namespaceparticles_abcbc6024ff4907d476e559ae16b4c8eb}{particles\+\_\+distribute}} (npcl\+\_\+add, ispec, x\+\_\+mode, vx\+\_\+mode, x\+\_\+start, x\+\_\+end, x\+\_\+mean, x\+\_\+std, vx\+\_\+start, vx\+\_\+end, vx\+\_\+mean, vx\+\_\+std)
+\begin{DoxyCompactList}\small\item\em 粒子を分配する. \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespaceparticles_a0a33a04526965e35b16a96f690f7cc99}{particles\+\_\+add\+\_\+particle}} (ispec, x, vx, ncycle)
 \begin{DoxyCompactList}\small\item\em 粒子を一つ追加する. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparticles_aaad2868395b8383d8fa2740c290cd4aa}\label{namespaceparticles_aaad2868395b8383d8fa2740c290cd4aa}} 
 subroutine, public \mbox{\hyperlink{namespaceparticles_aaad2868395b8383d8fa2740c290cd4aa}{particles\+\_\+sort}}
-\begin{DoxyCompactList}\small\item\em !$>$ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em 粒子位置で粒子のインデックスをソートする. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -43,52 +42,49 @@ subroutine, public \mbox{\hyperlink{namespaceparticles_aaad2868395b8383d8fa2740c
 \mbox{\texttt{ in}}  & {\em ncycle} & 設定する周期境界をまたいだ数 \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{namespaceparticles_a03ec3148c087f908d59a9b649ec39a39}\label{namespaceparticles_a03ec3148c087f908d59a9b649ec39a39}} 
-\index{particles@{particles}!particles\_add\_randomly@{particles\_add\_randomly}}
-\index{particles\_add\_randomly@{particles\_add\_randomly}!particles@{particles}}
-\doxysubsubsection{\texorpdfstring{particles\_add\_randomly()}{particles\_add\_randomly()}}
-{\footnotesize\ttfamily subroutine, public particles\+::particles\+\_\+add\+\_\+randomly (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{npcl\+\_\+add,  }\item[{integer, intent(in)}]{ispec,  }\item[{real(8), intent(in)}]{start\+\_\+x,  }\item[{real(8), intent(in)}]{end\+\_\+x }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{namespaceparticles_abcbc6024ff4907d476e559ae16b4c8eb}\label{namespaceparticles_abcbc6024ff4907d476e559ae16b4c8eb}} 
+\index{particles@{particles}!particles\_distribute@{particles\_distribute}}
+\index{particles\_distribute@{particles\_distribute}!particles@{particles}}
+\doxysubsubsection{\texorpdfstring{particles\_distribute()}{particles\_distribute()}}
+{\footnotesize\ttfamily subroutine, public particles\+::particles\+\_\+distribute (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{npcl\+\_\+add,  }\item[{integer, intent(in)}]{ispec,  }\item[{character($\ast$), intent(in)}]{x\+\_\+mode,  }\item[{character($\ast$), intent(in)}]{vx\+\_\+mode,  }\item[{real(8), intent(in), optional}]{x\+\_\+start,  }\item[{real(8), intent(in), optional}]{x\+\_\+end,  }\item[{real(8), intent(in), optional}]{x\+\_\+mean,  }\item[{real(8), intent(in), optional}]{x\+\_\+std,  }\item[{real(8), intent(in), optional}]{vx\+\_\+start,  }\item[{real(8), intent(in), optional}]{vx\+\_\+end,  }\item[{real(8), intent(in), optional}]{vx\+\_\+mean,  }\item[{real(8), intent(in), optional}]{vx\+\_\+std }\end{DoxyParamCaption})}
 
 
 
-粒子をランダムに配置する. 
+粒子を分配する. 
+
+\begin{quote}
+分配方法
+\begin{DoxyItemize}
+\item \textquotesingle{}uniform\textquotesingle{} \+: startからendまでの範囲に一様に分配する
+\item \textquotesingle{}random\textquotesingle{} \+: startからendまでの範囲にランダムに分配する
+\item \textquotesingle{}normal\textquotesingle{} \+: 平均mean, 分散stdの正規分布に従うように分配する 
+\end{DoxyItemize}\end{quote}
+
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em npcl\+\_\+add} & 追加する粒子の個数 \\
+\mbox{\texttt{ in}}  & {\em npcl\+\_\+add} & 追加する粒子数 \\
 \hline
-\mbox{\texttt{ in}}  & {\em ispec} & 粒子の種類 \\
+\mbox{\texttt{ in}}  & {\em ispec} & 追加する粒子の種類 \\
 \hline
-\mbox{\texttt{ in}}  & {\em start\+\_\+x} & 粒子を追加する範囲の初めの位置 \\
+\mbox{\texttt{ in}}  & {\em x\+\_\+mode} & 位置の分配方法(\textquotesingle{}uniform\textquotesingle{}, \textquotesingle{}random\textquotesingle{}, \textquotesingle{}normal\textquotesingle{}) \\
 \hline
-\mbox{\texttt{ in}}  & {\em end\+\_\+x} & 粒子を追加する範囲の最後の位置 \\
+\mbox{\texttt{ in}}  & {\em vx\+\_\+mode} & 速度の分配方法(\textquotesingle{}uniform\textquotesingle{}, \textquotesingle{}random\textquotesingle{}, \textquotesingle{}normal\textquotesingle{}) \\
+\hline
+\mbox{\texttt{ in}}  & {\em x\+\_\+start} & 初めの位置 (default\+: 0) \\
+\hline
+\mbox{\texttt{ in}}  & {\em x\+\_\+end} & 最後の位置 (default\+: ngrid$\ast$dx) \\
+\hline
+\mbox{\texttt{ in}}  & {\em x\+\_\+mean} & 平均位置 (default\+: 0.\+5$\ast$ngrid$\ast$dx) \\
+\hline
+\mbox{\texttt{ in}}  & {\em x\+\_\+std} & 位置の分散 (default\+: dx) \\
+\hline
+\mbox{\texttt{ in}}  & {\em vx\+\_\+start} & 最小速度 (default\+: -\/1) \\
+\hline
+\mbox{\texttt{ in}}  & {\em vx\+\_\+end} & 最大速度 (default\+: 1) \\
+\hline
+\mbox{\texttt{ in}}  & {\em vx\+\_\+mean} & 平均速度 (default\+: 0) \\
+\hline
+\mbox{\texttt{ in}}  & {\em vx\+\_\+std} & 速度の分散 (default\+: 1) \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{namespaceparticles_a301ecb6ddf22c9bfc9798ac61b70b495}\label{namespaceparticles_a301ecb6ddf22c9bfc9798ac61b70b495}} 
-\index{particles@{particles}!particles\_add\_uniformly@{particles\_add\_uniformly}}
-\index{particles\_add\_uniformly@{particles\_add\_uniformly}!particles@{particles}}
-\doxysubsubsection{\texorpdfstring{particles\_add\_uniformly()}{particles\_add\_uniformly()}}
-{\footnotesize\ttfamily subroutine, public particles\+::particles\+\_\+add\+\_\+uniformly (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{npcl\+\_\+add,  }\item[{integer, intent(in)}]{ispec }\end{DoxyParamCaption})}
-
-
-
-粒子を空間に一様に配置する. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em npcl\+\_\+add} & 追加する粒子の個数 \\
-\hline
-\mbox{\texttt{ in}}  & {\em ispec} & 粒子の種類 \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{namespaceparticles_aaad2868395b8383d8fa2740c290cd4aa}\label{namespaceparticles_aaad2868395b8383d8fa2740c290cd4aa}} 
-\index{particles@{particles}!particles\_sort@{particles\_sort}}
-\index{particles\_sort@{particles\_sort}!particles@{particles}}
-\doxysubsubsection{\texorpdfstring{particles\_sort()}{particles\_sort()}}
-{\footnotesize\ttfamily subroutine, public particles\+::particles\+\_\+sort}
-
-
-
-!$>$ 
-
-粒子位置で粒子のインデックスをソートする. 

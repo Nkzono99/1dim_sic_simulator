@@ -14,6 +14,27 @@ module particles
 
 contains
 
+    !> @brief 粒子を一つ追加する.
+    !>
+    !> @param[in] ispec 粒子の種類
+    !> @param[in] x 追加する位置
+    !> @param[in] vx 設定する速度
+    !> @param[in] ncycle 設定する周期境界をまたいだ数
+    subroutine particles_add_particle(ispec, x, vx, ncycle)
+        integer, intent(in) :: ispec
+        real(8), intent(in) :: x, vx
+        integer, intent(in) :: ncycle
+
+        if (npcl(ispec) + 1 > max_npcl) then
+            return
+        end if
+
+        npcl(ispec) = npcl(ispec) + 1
+        px(npcl(ispec), ispec) = x
+        pvx(npcl(ispec), ispec) = vx
+        ncycles(npcl(ispec), ispec) = ncycle
+    end subroutine
+
     !> @brief 粒子を分配する.
     !>
     !> @details
@@ -62,13 +83,13 @@ contains
         if (present(x_end)) then
             x_end_ = x_end
         else
-            x_end_ = ngrid * dx
+            x_end_ = ngrid*dx
         end if
 
         if (present(x_mean)) then
             x_mean_ = x_mean
         else
-            x_mean_ = 0.5 * ngrid * dx
+            x_mean_ = 0.5*ngrid*dx
         end if
 
         if (present(x_std)) then
@@ -123,14 +144,14 @@ contains
 
             call particles_add_particle(ispec, x, vx, 0)
         end do
-        
+
         ! 追加した粒子について位置でソートする
         call sort_for_species(ispec, npcl_prev + 1, npcl(ispec))
         call boundary_correct_pcl
     end subroutine
 
     !> @brief 一様な分布に従う値を返す.
-    !> 
+    !>
     !> @param[in] i 番号
     !> @param[in] n 最大番号
     !> @param[in] min_val 最小値
@@ -144,7 +165,7 @@ contains
     end function
 
     !> @brief ランダムな分布に従う値を返す.
-    !> 
+    !>
     !> @param[in] min_val 最小値
     !> @param[in] max_val 最大値
     function random(min_val, max_val)
@@ -166,27 +187,6 @@ contains
         call utils_rand_bm(normal)
         normal = val_mean + normal*val_std
     end function
-
-    !> @brief 粒子を一つ追加する.
-    !>
-    !> @param[in] ispec 粒子の種類
-    !> @param[in] x 追加する位置
-    !> @param[in] vx 設定する速度
-    !> @param[in] ncycle 設定する周期境界をまたいだ数
-    subroutine particles_add_particle(ispec, x, vx, ncycle)
-        integer, intent(in) :: ispec
-        real(8), intent(in) :: x, vx
-        integer, intent(in) :: ncycle
-
-        if (npcl(ispec) + 1 > max_npcl) then
-            return
-        end if
-
-        npcl(ispec) = npcl(ispec) + 1
-        px(npcl(ispec), ispec) = x
-        pvx(npcl(ispec), ispec) = vx
-        ncycles(npcl(ispec), ispec) = ncycle
-    end subroutine
 
     !> @brief 粒子位置で粒子のインデックスをソートする.
     subroutine particles_sort

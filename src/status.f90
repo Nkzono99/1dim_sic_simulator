@@ -32,8 +32,12 @@ contains
     end subroutine
 
     !> @brief 現在の状況をファイルに書き込む.
-    subroutine status_write
+    subroutine status_write(istep)
+        integer, intent(in) :: istep
         integer ispec
+        if (mod(istep - 1, output_skips) /= 0) then
+            return
+        end if
 
         do ispec = 1, nspec
             write (200 + ispec, '(*(F20.6, :, ","))') rhospec(1:ngrid, ispec)

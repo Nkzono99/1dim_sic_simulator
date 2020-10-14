@@ -61,9 +61,7 @@ program main
         ! call check_rho_and_phi
         ! print *, nsimp(1:nspec)
 
-        if (mod(istep - 1, output_skips) == 0) then
-            call status_write
-        end if
+        call status_write(istep)
     end do
 
     call status_close

@@ -28,6 +28,8 @@
     output_electrostatic_energy = .true.
     output_distance_between_tracers = .true.
     output_npcl = .true.
+    output_simplex_steps = 100
+    output_nsimp = 1000
 /
 
 &plasma

@@ -37,6 +37,10 @@ module parameters
     logical :: output_distance_between_tracers = .false.
     !> トレーサー数を出力するか
     logical :: output_npcl = .false.
+    !> Simplexの位置を出力するステップ数(0なら出力しない)
+    integer :: output_simplex_steps = 0
+    !> 出力するSimplex数
+    integer :: output_nsimp = 100
 
     !> 境界条件(0: 周期境界条件, 1: 反射境界条件)
     integer :: boundary_type = 0
@@ -103,6 +107,7 @@ module parameters
     public nsteps, output_steps, output_skips
     public output_kinetic_energy, output_electrostatic_energy
     public output_distance_between_tracers, output_npcl
+    public output_simplex_steps, output_nsimp
     public boundary_type
     public solve_method
     public error_limit, max_loop_count
@@ -133,7 +138,7 @@ contains
         namelist /solver/ solve_method, error_limit, max_loop_count, find_exact_solution, convergence_judge_interval, &
                 & refinement_interval, refinement_threshold
         namelist /output/ output_steps, output_kinetic_energy, output_electrostatic_energy, output_distance_between_tracers, &
-                & output_npcl
+                & output_npcl, output_simplex_steps, output_nsimp
         namelist /plasma/ nspec, lambda, q_ratio, m_ratio, Ts
 
         if (present(output_number)) then

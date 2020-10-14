@@ -50,12 +50,31 @@ contains
     subroutine particles_delete_particle(ispec, ipcl)
         integer, intent(in) :: ispec
         integer, intent(in) :: ipcl
+        integer :: isimp1, isimp2
 
         px(ipcl, ispec) = px(npcl(ispec), ispec)
         pvx(ipcl, ispec) = pvx(npcl(ispec), ispec)
         ncycles(ipcl, ispec) = ncycles(npcl(ispec), ispec)
         pcl2simp(ipcl, ispec, 1) = pcl2simp(npcl(ispec), ispec, 1)
         pcl2simp(ipcl, ispec, 2) = pcl2simp(npcl(ispec), ispec, 2)
+
+        isimp1 = pcl2simp(npcl(ispec), ispec, 1)
+        isimp2 = pcl2simp(npcl(ispec), ispec, 2)
+        if (isimp1 /= -1) then
+            if (simplices(isimp1, ispec)%ipcl1 == npcl(ispec)) then
+                simplices(isimp1, ispec)%ipcl1 = ipcl
+            else
+                simplices(isimp1, ispec)%ipcl2 = ipcl
+            end if
+        end if
+
+        if (isimp2 /= -1) then
+            if (simplices(isimp2, ispec)%ipcl1 == npcl(ispec)) then
+                simplices(isimp2, ispec)%ipcl1 = ipcl
+            else
+                simplices(isimp2, ispec)%ipcl2 = ipcl
+            end if
+        end if
 
         npcl(ispec) = npcl(ispec) - 1
     end subroutine

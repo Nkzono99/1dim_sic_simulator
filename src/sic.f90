@@ -138,7 +138,7 @@ contains
 
         if (pcl2simp(ipcl2, ispec, 1) == isimp) then
             pcl2simp(ipcl2, ispec, 1) = -1
-        else if (pcl2simp(ipcl2, ispec, 2) == -1) then
+        else if (pcl2simp(ipcl2, ispec, 2) == isimp) then
             pcl2simp(ipcl2, ispec, 2) = -1
         end if
 

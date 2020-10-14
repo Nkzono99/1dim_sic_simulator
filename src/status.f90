@@ -29,22 +29,37 @@ contains
         if (output_kinetic_energy) open (106, file=output_dir//'/kinetic_energy.csv', status='replace')
         if (output_distance_between_tracers) open (107, file=output_dir//'distance_between_tracers.csv', status='replace')
         if (output_npcl) open (108, file=output_dir//'npcl.csv', status='replace')
+        do ispec = 1, nspec
+            write (str, '(i0)') ispec
+            open (300+ispec, file=output_dir//'simplex'//trim(str)//'.csv', status='replace')
+        end do
     end subroutine
 
     !> @brief 現在の状況をファイルに書き込む.
-    subroutine status_write
+    !> @param[in] istep 現在のステップ数
+    subroutine status_write(istep)
+        integer, intent(in) :: istep
         integer ispec
+        if (mod(istep - 1, output_skips) == 0) then
+            do ispec = 1, nspec
+                write (200 + ispec, '(*(F20.6, :, ","))') rhospec(1:ngrid, ispec)
+            end do
+            write (103, '(*(F20.6, :, ","))') phi(1:ngrid)
+            write (104, '(*(F20.6, :, ","))') ex(1:ngrid)
 
-        do ispec = 1, nspec
-            write (200 + ispec, '(*(F20.6, :, ","))') rhospec(1:ngrid, ispec)
-        end do
-        write (103, '(*(F20.6, :, ","))') phi(1:ngrid)
-        write (104, '(*(F20.6, :, ","))') ex(1:ngrid)
+            if (output_electrostatic_energy) call write_electrostatic_energy(105)
+            if (output_kinetic_energy) call write_kinetic_energy(106)
+            if (output_distance_between_tracers) call write_distance_between_tracers(107)
+            if (output_npcl) call write_npcl(108)
+        end if
 
-        if (output_electrostatic_energy) call write_electrostatic_energy(105)
-        if (output_kinetic_energy) call write_kinetic_energy(106)
-        if (output_distance_between_tracers) call write_distance_between_tracers(107)
-        if (output_npcl) call write_npcl(108)
+        if (output_simplex_steps /= 0) then
+            if (mod(istep - 1, int(nsteps / output_simplex_steps)) == 0) then
+                do ispec = 1, nspec
+                    call write_simplex(300+ispec, ispec, istep)
+                end do
+            end if
+        end if
     end subroutine
 
     !> @brief 出力を終了する.
@@ -137,6 +152,32 @@ contains
         integer, intent(in) :: output_number
 
         write (output_number, '(*(I16, :, ","))') npcl(1:nspec)
+    end subroutine
+
+    !> @brief Simplex位置をファイルに書き込む.
+    !>
+    !> @param[in] output_number 出力番号
+    !> @param[in] ispec 粒子の種類
+    !> @param[in] istep 現在のステップ数
+    subroutine write_simplex(output_number, ispec, istep)
+        integer, intent(in) :: output_number
+        integer, intent(in) :: ispec
+        integer, intent(in) :: istep
+        integer isimp, ipcl1, ipcl2, skips
+        real(8) :: px1, px2, offset1, offset2
+
+        skips = max(1, int(nsimp(ispec) / output_nsimp))
+
+        write (output_number, '(a, I10)') 'Time ', istep
+        do isimp = 1, nsimp(ispec), skips
+            ipcl1 = simplices(isimp, ispec)%ipcl1
+            ipcl2 = simplices(isimp, ispec)%ipcl2
+            offset1 = simplices(isimp, ispec)%offset1
+            offset2 = simplices(isimp, ispec)%offset2
+            px1 = px(ipcl1, ispec) + ncycles(ipcl1, ispec) * dx * ngrid + offset1
+            px2 = px(ipcl2, ispec) + ncycles(ipcl2, ispec) * dx * ngrid + offset2
+            write (output_number, '(*(F20.6, :, ","))') px1, px2
+        end do
     end subroutine
 
 end module

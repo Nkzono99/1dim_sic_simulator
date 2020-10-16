@@ -9,6 +9,7 @@ module particles
     private
 
     public particles_add_particle
+    public particles_delete_particle
     public particles_distribute
     public particles_sort
 
@@ -20,12 +21,15 @@ contains
     !> @param[in] x 追加する位置
     !> @param[in] vx 設定する速度
     !> @param[in] ncycle 設定する周期境界をまたいだ数
-    subroutine particles_add_particle(ispec, x, vx, ncycle)
+    !> @retval status 追加に成功したら.true.
+    subroutine particles_add_particle(ispec, x, vx, ncycle, status)
         integer, intent(in) :: ispec
         real(8), intent(in) :: x, vx
         integer, intent(in) :: ncycle
+        logical, intent(out), optional :: status
 
         if (npcl(ispec) + 1 > max_npcl) then
+            if (present(status)) status = .false.
             return
         end if
 
@@ -33,6 +37,46 @@ contains
         px(npcl(ispec), ispec) = x
         pvx(npcl(ispec), ispec) = vx
         ncycles(npcl(ispec), ispec) = ncycle
+        pcl2simp(npcl(ispec), ispec, 1) = -1
+        pcl2simp(npcl(ispec), ispec, 2) = -1
+
+        if (present(status)) status = .true.
+    end subroutine
+
+    !> @brief 粒子を削除し、削除した位置に最後の粒子を移動する.
+    !>
+    !> @param[in] ispec 粒子の種類
+    !> @param[in] ipcl 粒子番号
+    subroutine particles_delete_particle(ispec, ipcl)
+        integer, intent(in) :: ispec
+        integer, intent(in) :: ipcl
+        integer :: isimp1, isimp2
+
+        px(ipcl, ispec) = px(npcl(ispec), ispec)
+        pvx(ipcl, ispec) = pvx(npcl(ispec), ispec)
+        ncycles(ipcl, ispec) = ncycles(npcl(ispec), ispec)
+        pcl2simp(ipcl, ispec, 1) = pcl2simp(npcl(ispec), ispec, 1)
+        pcl2simp(ipcl, ispec, 2) = pcl2simp(npcl(ispec), ispec, 2)
+
+        isimp1 = pcl2simp(npcl(ispec), ispec, 1)
+        isimp2 = pcl2simp(npcl(ispec), ispec, 2)
+        if (isimp1 /= -1) then
+            if (simplices(isimp1, ispec)%ipcl1 == npcl(ispec)) then
+                simplices(isimp1, ispec)%ipcl1 = ipcl
+            else
+                simplices(isimp1, ispec)%ipcl2 = ipcl
+            end if
+        end if
+
+        if (isimp2 /= -1) then
+            if (simplices(isimp2, ispec)%ipcl1 == npcl(ispec)) then
+                simplices(isimp2, ispec)%ipcl1 = ipcl
+            else
+                simplices(isimp2, ispec)%ipcl2 = ipcl
+            end if
+        end if
+
+        npcl(ispec) = npcl(ispec) - 1
     end subroutine
 
     !> @brief 粒子を分配する.

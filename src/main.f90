@@ -57,6 +57,10 @@ program main
             call sic_refinement(refinement_threshold*dx)
         end if
 
+        if (simplification_interval /= 0 .and. mod(istep, simplification_interval) == 0) then
+            call sic_simplification(simplification_threshold*dx)
+        end if
+
         ! call show_temprature
         ! call check_rho_and_phi
         ! print *, nsimp(1:nspec)

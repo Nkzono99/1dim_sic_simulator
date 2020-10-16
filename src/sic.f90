@@ -13,6 +13,7 @@ module sic
     public sic_init
     public sic_correct_temprature
     public sic_refinement
+    public sic_simplification
     public sic_scatter_on_grid
     public sic_update
 
@@ -116,6 +117,57 @@ contains
         end if
     end subroutine
 
+    !> @brief simplexを削除し、削除したインデックスに最後のsimplexを移動する.
+    !>
+    !> @param[in] ispec 粒子の種類
+    !> @param[in] isimp 削除するsimplex番号
+    subroutine sic_delete_simplex(ispec, isimp)
+        integer, intent(in) :: ispec
+        integer, intent(in) :: isimp
+        integer ipcl1, ipcl2
+
+        ipcl1 = simplices(isimp, ispec)%ipcl1
+        ipcl2 = simplices(isimp, ispec)%ipcl2
+
+        ! particleからsimplexへのリンクがまだ残っている場合、そのリンクを削除する
+        if (pcl2simp(ipcl1, ispec, 1) == isimp) then
+            pcl2simp(ipcl1, ispec, 1) = -1
+        else if (pcl2simp(ipcl1, ispec, 2) == isimp) then
+            pcl2simp(ipcl1, ispec, 2) = -1
+        end if
+
+        if (pcl2simp(ipcl2, ispec, 1) == isimp) then
+            pcl2simp(ipcl2, ispec, 1) = -1
+        else if (pcl2simp(ipcl2, ispec, 2) == isimp) then
+            pcl2simp(ipcl2, ispec, 2) = -1
+        end if
+
+        ! インデックスを移動するためparticleからsimiplexへのリンクを書き換える
+        ipcl1 = simplices(nsimp(ispec), ispec)%ipcl1
+        ipcl2 = simplices(nsimp(ispec), ispec)%ipcl2
+        if (pcl2simp(ipcl1, ispec, 1) == nsimp(ispec)) then
+            pcl2simp(ipcl1, ispec, 1) = isimp
+        else
+            pcl2simp(ipcl1, ispec, 2) = isimp
+        end if
+
+        if (pcl2simp(ipcl2, ispec, 1) == nsimp(ispec)) then
+            pcl2simp(ipcl2, ispec, 1) = isimp
+        else
+            pcl2simp(ipcl2, ispec, 2) = isimp
+        end if
+
+        ! 最後のsimplexを移動する
+        simplices(isimp, ispec)%ipcl1 = simplices(nsimp(ispec), ispec)%ipcl1
+        simplices(isimp, ispec)%ipcl2 = simplices(nsimp(ispec), ispec)%ipcl2
+        simplices(isimp, ispec)%offset1 = simplices(nsimp(ispec), ispec)%offset1
+        simplices(isimp, ispec)%offset2 = simplices(nsimp(ispec), ispec)%offset2
+        simplices(isimp, ispec)%rate = simplices(nsimp(ispec), ispec)%rate
+
+        ! simplex数をデクリメントする
+        nsimp(ispec) = nsimp(ispec) - 1
+    end subroutine
+
     !> @brief Refinementを適用する.
     !>
     !> @details トレーサー間がしきい値より離れた場合そのsimplexをしきい値未満になるまで分割する.
@@ -164,6 +216,7 @@ contains
         real(8) :: px1, px2, pvx1, pvx2
         real(8) :: px_new, pvx_new
         integer :: ncycle_new
+        logical :: status
 
         ! simplex数が最大数に達していたら終了
         if (nsimp(ispec) >= max_npcl) then
@@ -187,7 +240,12 @@ contains
         px_new = px_new - ncycle_new*dx*ngrid
         ! 速度計算
         pvx_new = 0.5*(pvx1 + pvx2)
-        call particles_add_particle(ispec, px_new, pvx_new, ncycle_new)
+        call particles_add_particle(ispec, px_new, pvx_new, ncycle_new, status=status)
+        
+        ! 追加できなかった場合終了
+        if (.not. status) then
+            return
+        end if
 
         ! particleからsimplexへのリンクを削除
         if (pcl2simp(ipcl1, ispec, 1) == isimp) then
@@ -524,6 +582,134 @@ contains
         end do
 
         call boundary_correct_pcl
+    end subroutine
+
+    !> @brief simplexを縮約する.
+    !>
+    !> @param[in] isimp simplexのインデックス
+    !> @param[in] ispec 粒子の種類
+    subroutine sic_contract_simplex(isimp, ispec)
+        integer, intent(in) :: isimp, ispec
+        integer :: ipcl1, ipcl2, isimp1, isimp2
+        real(8) :: add_rate, offset1, offset2
+        real(8) :: px1, px2, pvx1, pvx2
+        real(8) :: px_new, pvx_new
+        integer :: ncycle_new
+        logical :: status
+
+        ipcl1 = simplices(isimp, ispec)%ipcl1
+        ipcl2 = simplices(isimp, ispec)%ipcl2
+        offset1 = simplices(isimp, ispec)%offset1
+        offset2 = simplices(isimp, ispec)%offset2
+        px1 = px(ipcl1, ispec) + ngrid*dx*ncycles(ipcl1, ispec) + offset1
+        px2 = px(ipcl2, ispec) + ngrid*dx*ncycles(ipcl2, ispec) + offset2
+        pvx1 = pvx(ipcl1, ispec)
+        pvx2 = pvx(ipcl2, ispec)
+
+        ! 中点に新しいトレーサーを追加
+        ! 位置計算
+        px_new = 0.5*(px1 + px2)
+        ncycle_new = int(0.5*(px1 + px2)/(dx*ngrid))
+        px_new = px_new - ncycle_new*dx*ngrid
+        ! 速度計算
+        pvx_new = 0.5*(pvx1 + pvx2)
+        call particles_add_particle(ispec, px_new, pvx_new, ncycle_new, status=status)
+        
+        ! 追加できなかった場合終了
+        if (.not. status) then
+            return
+        end if
+
+        ! 左側のsimplex番号を取得(存在しない場合-1)
+        if (pcl2simp(ipcl1, ispec, 1) /= isimp) then
+            isimp1 = pcl2simp(ipcl1, ispec, 1)
+        else
+            isimp1 = pcl2simp(ipcl1, ispec, 2)
+        end if
+
+        ! 右側のsimplex番号を取得(存在しない場合-1)
+        if (pcl2simp(ipcl2, ispec, 1) /= isimp) then
+            isimp2 = pcl2simp(ipcl2, ispec, 1)
+        else
+            isimp2 = pcl2simp(ipcl2, ispec, 2)
+        end if
+
+        ! 両側に粒子密度を分配する
+        if (isimp1 /= -1 .and. isimp2 /= -1) then
+            add_rate = simplices(isimp, ispec)%rate*0.5d0
+        else
+            add_rate = simplices(isimp, ispec)%rate
+        end if
+
+        ! 左側のsimplexに分配する
+        if (isimp1 /= -1) then
+            simplices(isimp1, ispec)%rate = simplices(isimp1, ispec)%rate + add_rate
+        end if
+
+        ! 右側のsimplexに分配する
+        if (isimp2 /= -1) then
+            simplices(isimp2, ispec)%rate = simplices(isimp2, ispec)%rate + add_rate
+        end if
+
+        ! 両側のsimplexのトレーサーを付け替える
+        if (isimp1 /= -1) then
+            ! 左側のsimplexのトレーサーを新しく追加したトレーサーに変更する
+            if (simplices(isimp1, ispec)%ipcl1 == ipcl1) then
+                simplices(isimp1, ispec)%ipcl1 = npcl(ispec)
+            else
+                simplices(isimp1, ispec)%ipcl2 = npcl(ispec)
+            end if
+        end if
+
+        if (isimp2 /= -1) then
+            ! 右側のsimplexのトレーサーを新しく追加したトレーサーに変更する
+            if (simplices(isimp2, ispec)%ipcl1 == ipcl2) then
+                simplices(isimp2, ispec)%ipcl1 = npcl(ispec)
+            else
+                simplices(isimp2, ispec)%ipcl2 = npcl(ispec)
+            end if
+        end if
+
+        ! トレーサーからsimplexへのリンクを作る
+        pcl2simp(npcl(ispec), ispec, 1) = isimp1
+        pcl2simp(npcl(ispec), ispec, 2) = isimp2
+
+        call sic_delete_simplex(ispec, isimp)
+        call particles_delete_particle(ispec, ipcl1)
+        call particles_delete_particle(ispec, ipcl2)
+    end subroutine
+
+    subroutine sic_simplification(threshold)
+        real(8), intent(in) :: threshold
+        integer :: isimp, ispec
+        integer :: ipcl1, ipcl2
+        real(8) :: offset1, offset2
+        real(8) :: px1, px2
+
+        do ispec = 1, nspec
+            isimp = 1
+            do while (isimp <= nsimp(ispec))
+                if (nsimp(ispec) == 0) then
+                    exit
+                end if
+                ipcl1 = simplices(isimp, ispec)%ipcl1
+                ipcl2 = simplices(isimp, ispec)%ipcl2
+                offset1 = simplices(isimp, ispec)%offset1
+                offset2 = simplices(isimp, ispec)%offset2
+                px1 = px(ipcl1, ispec) + ngrid*dx*ncycles(ipcl1, ispec) + offset1
+                px2 = px(ipcl2, ispec) + ngrid*dx*ncycles(ipcl2, ispec) + offset2
+
+                if (abs(px2 - px1) < threshold) then
+                    call sic_contract_simplex(isimp, ispec)
+
+                    ! 削除した位置には最後のsimplexが移動するためcontinue
+                    continue
+                end if
+
+                isimp = isimp + 1
+            end do
+        end do
+
     end subroutine
 
 end module

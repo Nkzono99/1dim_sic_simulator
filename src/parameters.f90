@@ -91,10 +91,17 @@ module parameters
     !> 一つのsimplexの質量
     real(8) :: ms(max_nspec)
 
+    ! Refinement Parameter
     !> refinementを実行する間隔(0ならrefinementを行わない)
     integer :: refinement_interval = 0
     !> refinementを実行するしきい値 [grid]
     real(8) :: refinement_threshold = 1
+
+    ! Simplification Parameter
+    !> simplificationを実行する間隔(0ならsimplificationを行わない)
+    integer :: simplification_interval = 0
+    !> simplificationを実行するしきい値 [grid]
+    real(8) :: simplification_threshold = 0.1
 
     !> スレッド数 (プログラム実行時に格納される)
     integer :: nthreads = 1
@@ -118,8 +125,9 @@ module parameters
     public nspec, q_ratio, m_ratio, Ts
     public npcl_per_super, qs, ms
     public refinement_interval, refinement_threshold
+    public simplification_interval, simplification_threshold
     public nthreads
-    
+
     public parameters_init
 
 contains
@@ -129,14 +137,14 @@ contains
     !> @param[in] inputfilename パラメータファイル名
     !> @param[in] output_number 出力番号(default: 11)
     subroutine parameters_init(inputfilename, output_number)
-        character(*), intent(in) :: inputfilename 
+        character(*), intent(in) :: inputfilename
         integer, intent(in), optional :: output_number
         integer :: output_number_
 
         namelist /random/ random_seed
         namelist /simulation/ nsteps, npcl_init, max_npcl, ngrid, dx, dt, boundary_type
         namelist /solver/ solve_method, error_limit, max_loop_count, find_exact_solution, convergence_judge_interval, &
-                & refinement_interval, refinement_threshold
+                & refinement_interval, refinement_threshold, simplification_interval, simplification_threshold
         namelist /output/ output_steps, output_kinetic_energy, output_electrostatic_energy, output_distance_between_tracers, &
                 & output_npcl, output_simplex_steps, output_nsimp
         namelist /plasma/ nspec, lambda, q_ratio, m_ratio, Ts

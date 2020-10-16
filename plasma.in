@@ -20,6 +20,8 @@
     convergence_judge_interval = 10
     refinement_interval = 100
     refinement_threshold = 10
+    simplification_interval = 100
+    simplification_threshold = 0.1
 /
 
 &output

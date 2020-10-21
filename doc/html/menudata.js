@@ -46,7 +46,15 @@ var menudata={children:[
 {text:"s",url:"namespacemembers.html#index_s"},
 {text:"t",url:"namespacemembers.html#index_t"},
 {text:"u",url:"namespacemembers.html#index_u"}]},
-{text:"Functions/Subroutines",url:"namespacemembers_func.html"},
+{text:"Functions/Subroutines",url:"namespacemembers_func.html",children:[
+{text:"a",url:"namespacemembers_func.html#index_a"},
+{text:"b",url:"namespacemembers_func.html#index_b"},
+{text:"c",url:"namespacemembers_func.html#index_c"},
+{text:"e",url:"namespacemembers_func.html#index_e"},
+{text:"f",url:"namespacemembers_func.html#index_f"},
+{text:"p",url:"namespacemembers_func.html#index_p"},
+{text:"s",url:"namespacemembers_func.html#index_s"},
+{text:"u",url:"namespacemembers_func.html#index_u"}]},
 {text:"Variables",url:"namespacemembers_vars.html",children:[
 {text:"a",url:"namespacemembers_vars.html#index_a"},
 {text:"b",url:"namespacemembers_vars.html#index_b"},

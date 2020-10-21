@@ -2,7 +2,7 @@
 \label{namespacesic}\index{sic@{sic}}
 
 
-simplexに対する処理モジュール.  
+S\+I\+C法のメイン処理モジュール  
 
 
 \doxysubsection*{Functions/\+Subroutines}
@@ -11,8 +11,6 @@ simplexに対する処理モジュール.
 \mbox{\Hypertarget{namespacesic_af76384b2a57a47d7b02f3574a5b1a2b9}\label{namespacesic_af76384b2a57a47d7b02f3574a5b1a2b9}} 
 subroutine, public \mbox{\hyperlink{namespacesic_af76384b2a57a47d7b02f3574a5b1a2b9}{sic\+\_\+init}}
 \begin{DoxyCompactList}\small\item\em simplexを初期化する. \end{DoxyCompactList}\item 
-subroutine, public \mbox{\hyperlink{namespacesic_afdb4c8e975017da107618e892a08d2b2}{sic\+\_\+refinement}} (threshold)
-\begin{DoxyCompactList}\small\item\em Refinementを適用する. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespacesic_a2543398f0de764a44514acd6e4a0a93c}\label{namespacesic_a2543398f0de764a44514acd6e4a0a93c}} 
 subroutine, public \mbox{\hyperlink{namespacesic_a2543398f0de764a44514acd6e4a0a93c}{sic\+\_\+scatter\+\_\+on\+\_\+grid}}
 \begin{DoxyCompactList}\small\item\em 粒子電荷をグリッドに分配する. \end{DoxyCompactList}\item 
@@ -21,11 +19,15 @@ subroutine, public \mbox{\hyperlink{namespacesic_a81b2a4e731ae8e7b6f56d89a0be4c9
 \begin{DoxyCompactList}\small\item\em トレーサー位置・速度を更新する. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespacesic_a8d98c7e0c3591ed7b0c8323abfa517f5}\label{namespacesic_a8d98c7e0c3591ed7b0c8323abfa517f5}} 
 subroutine, public \mbox{\hyperlink{namespacesic_a8d98c7e0c3591ed7b0c8323abfa517f5}{sic\+\_\+correct\+\_\+temprature}}
-\begin{DoxyCompactList}\small\item\em 設定した粒子温度になるように速度を補正する. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em 設定した粒子温度になるように速度を補正する. \end{DoxyCompactList}\item 
+subroutine, public \mbox{\hyperlink{namespacesic_afdb4c8e975017da107618e892a08d2b2}{sic\+\_\+refinement}} (threshold)
+\begin{DoxyCompactList}\small\item\em Refinementを適用する. \end{DoxyCompactList}\item 
+subroutine, public \mbox{\hyperlink{namespacesic_abf145e07e179b44bc230c4cc5faa6daf}{sic\+\_\+simplification}} (threshold)
+\begin{DoxyCompactList}\small\item\em トレーサー間距離がしきい値以下になったsimplexを統合する. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-simplexに対する処理モジュール. 
+S\+I\+C法のメイン処理モジュール 
 
 \doxysubsection{Function/\+Subroutine Documentation}
 \mbox{\Hypertarget{namespacesic_afdb4c8e975017da107618e892a08d2b2}\label{namespacesic_afdb4c8e975017da107618e892a08d2b2}} 
@@ -39,6 +41,21 @@ simplexに対する処理モジュール.
 Refinementを適用する. 
 
 トレーサー間がしきい値より離れた場合そのsimplexをしきい値未満になるまで分割する.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em threshold} & しきい値 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacesic_abf145e07e179b44bc230c4cc5faa6daf}\label{namespacesic_abf145e07e179b44bc230c4cc5faa6daf}} 
+\index{sic@{sic}!sic\_simplification@{sic\_simplification}}
+\index{sic\_simplification@{sic\_simplification}!sic@{sic}}
+\doxysubsubsection{\texorpdfstring{sic\_simplification()}{sic\_simplification()}}
+{\footnotesize\ttfamily subroutine, public sic\+::sic\+\_\+simplification (\begin{DoxyParamCaption}\item[{real(8), intent(in)}]{threshold }\end{DoxyParamCaption})}
+
+
+
+トレーサー間距離がしきい値以下になったsimplexを統合する. 
 
 
 \begin{DoxyParams}[1]{Parameters}

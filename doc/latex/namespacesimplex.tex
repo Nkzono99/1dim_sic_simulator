@@ -1,0 +1,102 @@
+\hypertarget{namespacesimplex}{}\doxysection{simplex Module Reference}
+\label{namespacesimplex}\index{simplex@{simplex}}
+
+
+simplexに対する処理モジュール.  
+
+
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \mbox{\hyperlink{namespacesimplex_a855995fb4fc31b246b0f68d1bd2f7fc4}{simplex\+\_\+add\+\_\+simplex}} (ispec, ipcl1, ipcl2, rate, offset1, offset2, isimp)
+\begin{DoxyCompactList}\small\item\em 新しいsimplexを追加する. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespacesimplex_a24ae6879395fed6f7901b0d22c3884a5}{simplex\+\_\+delete\+\_\+simplex}} (ispec, isimp)
+\begin{DoxyCompactList}\small\item\em simplexを削除し、削除したインデックスに最後のsimplexを移動する. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespacesimplex_a3698fa35902a647b54da0c7ddc822f0a}{simplex\+\_\+split\+\_\+simplex}} (isimp, ispec)
+\begin{DoxyCompactList}\small\item\em simplexを分割する. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespacesimplex_ab889e4539886567b8f6b0b7866bb817e}{simplex\+\_\+contract\+\_\+simplex}} (isimp, ispec)
+\begin{DoxyCompactList}\small\item\em simplexを縮約する. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+simplexに対する処理モジュール. 
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespacesimplex_a855995fb4fc31b246b0f68d1bd2f7fc4}\label{namespacesimplex_a855995fb4fc31b246b0f68d1bd2f7fc4}} 
+\index{simplex@{simplex}!simplex\_add\_simplex@{simplex\_add\_simplex}}
+\index{simplex\_add\_simplex@{simplex\_add\_simplex}!simplex@{simplex}}
+\doxysubsubsection{\texorpdfstring{simplex\_add\_simplex()}{simplex\_add\_simplex()}}
+{\footnotesize\ttfamily subroutine simplex\+::simplex\+\_\+add\+\_\+simplex (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{ispec,  }\item[{integer, intent(in)}]{ipcl1,  }\item[{integer, intent(in)}]{ipcl2,  }\item[{real(8), intent(in)}]{rate,  }\item[{real(8), intent(in), optional}]{offset1,  }\item[{real(8), intent(in), optional}]{offset2,  }\item[{integer, intent(in), optional}]{isimp }\end{DoxyParamCaption})}
+
+
+
+新しいsimplexを追加する. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em ispec} & 粒子の種類 \\
+\hline
+\mbox{\texttt{ in}}  & {\em ipcl1} & 1つ目の粒子のインデックス \\
+\hline
+\mbox{\texttt{ in}}  & {\em ipcl2} & 2つ目の粒子のインデックス \\
+\hline
+\mbox{\texttt{ in}}  & {\em rate} & 粒子密度 \\
+\hline
+\mbox{\texttt{ in}}  & {\em offset1} & 1つ目の粒子のオフセット(default\+: 0) \\
+\hline
+\mbox{\texttt{ in}}  & {\em offset2} & 2つ目の粒子のオフセット(default\+: 0) \\
+\hline
+\mbox{\texttt{ in}}  & {\em isimp} & simplexを上書きする場合はそのインデックスを指定する(default\+:追加) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacesimplex_ab889e4539886567b8f6b0b7866bb817e}\label{namespacesimplex_ab889e4539886567b8f6b0b7866bb817e}} 
+\index{simplex@{simplex}!simplex\_contract\_simplex@{simplex\_contract\_simplex}}
+\index{simplex\_contract\_simplex@{simplex\_contract\_simplex}!simplex@{simplex}}
+\doxysubsubsection{\texorpdfstring{simplex\_contract\_simplex()}{simplex\_contract\_simplex()}}
+{\footnotesize\ttfamily subroutine simplex\+::simplex\+\_\+contract\+\_\+simplex (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{isimp,  }\item[{integer, intent(in)}]{ispec }\end{DoxyParamCaption})}
+
+
+
+simplexを縮約する. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em isimp} & simplexのインデックス \\
+\hline
+\mbox{\texttt{ in}}  & {\em ispec} & 粒子の種類 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacesimplex_a24ae6879395fed6f7901b0d22c3884a5}\label{namespacesimplex_a24ae6879395fed6f7901b0d22c3884a5}} 
+\index{simplex@{simplex}!simplex\_delete\_simplex@{simplex\_delete\_simplex}}
+\index{simplex\_delete\_simplex@{simplex\_delete\_simplex}!simplex@{simplex}}
+\doxysubsubsection{\texorpdfstring{simplex\_delete\_simplex()}{simplex\_delete\_simplex()}}
+{\footnotesize\ttfamily subroutine simplex\+::simplex\+\_\+delete\+\_\+simplex (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{ispec,  }\item[{integer, intent(in)}]{isimp }\end{DoxyParamCaption})}
+
+
+
+simplexを削除し、削除したインデックスに最後のsimplexを移動する. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em ispec} & 粒子の種類 \\
+\hline
+\mbox{\texttt{ in}}  & {\em isimp} & 削除するsimplex番号 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacesimplex_a3698fa35902a647b54da0c7ddc822f0a}\label{namespacesimplex_a3698fa35902a647b54da0c7ddc822f0a}} 
+\index{simplex@{simplex}!simplex\_split\_simplex@{simplex\_split\_simplex}}
+\index{simplex\_split\_simplex@{simplex\_split\_simplex}!simplex@{simplex}}
+\doxysubsubsection{\texorpdfstring{simplex\_split\_simplex()}{simplex\_split\_simplex()}}
+{\footnotesize\ttfamily subroutine simplex\+::simplex\+\_\+split\+\_\+simplex (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{isimp,  }\item[{integer, intent(in)}]{ispec }\end{DoxyParamCaption})}
+
+
+
+simplexを分割する. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em isimp} & simplexのインデックス \\
+\hline
+\mbox{\texttt{ in}}  & {\em ispec} & 粒子の種類 \\
+\hline
+\end{DoxyParams}

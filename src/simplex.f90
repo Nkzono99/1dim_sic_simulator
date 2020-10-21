@@ -1,3 +1,4 @@
+!> @brief simplexに対する処理モジュール.
 module simplex
     use parameters
     use commons
@@ -5,11 +6,13 @@ module simplex
     implicit none
 
 contains
+
     !> @brief 新しいsimplexを追加する.
     !>
     !> @param[in] ispec 粒子の種類
     !> @param[in] ipcl1 1つ目の粒子のインデックス
     !> @param[in] ipcl2 2つ目の粒子のインデックス
+    !> @param[in] rate 粒子密度
     !> @param[in] offset1 1つ目の粒子のオフセット(default: 0)
     !> @param[in] offset2 2つ目の粒子のオフセット(default: 0)
     !> @param[in] isimp simplexを上書きする場合はそのインデックスを指定する(default:追加)

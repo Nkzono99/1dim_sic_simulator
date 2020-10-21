@@ -77,10 +77,9 @@ Functions/Subroutines</h2></td></tr>
 <tr class="memitem:af6c30d53c06c9d37e63f7485addea26b"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestatus.html#af6c30d53c06c9d37e63f7485addea26b">status_start</a> (output_dir)</td></tr>
 <tr class="memdesc:af6c30d53c06c9d37e63f7485addea26b"><td class="mdescLeft">&#160;</td><td class="mdescRight">出力ファイルを作成する.  <a href="namespacestatus.html#af6c30d53c06c9d37e63f7485addea26b">More...</a><br /></td></tr>
 <tr class="separator:af6c30d53c06c9d37e63f7485addea26b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad688962536d417781c6e5e691a9aa71b"><td class="memItemLeft" align="right" valign="top"><a id="ad688962536d417781c6e5e691a9aa71b"></a>
-subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestatus.html#ad688962536d417781c6e5e691a9aa71b">status_write</a></td></tr>
-<tr class="memdesc:ad688962536d417781c6e5e691a9aa71b"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在の状況をファイルに書き込む. <br /></td></tr>
-<tr class="separator:ad688962536d417781c6e5e691a9aa71b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b94db81d5058218490d862604ae17f1"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestatus.html#a5b94db81d5058218490d862604ae17f1">status_write</a> (istep)</td></tr>
+<tr class="memdesc:a5b94db81d5058218490d862604ae17f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在の状況をファイルに書き込む.  <a href="namespacestatus.html#a5b94db81d5058218490d862604ae17f1">More...</a><br /></td></tr>
+<tr class="separator:a5b94db81d5058218490d862604ae17f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02a6bc05bd24340901d0140cb318afa4"><td class="memItemLeft" align="right" valign="top"><a id="a02a6bc05bd24340901d0140cb318afa4"></a>
 subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestatus.html#a02a6bc05bd24340901d0140cb318afa4">status_close</a></td></tr>
 <tr class="memdesc:a02a6bc05bd24340901d0140cb318afa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">出力を終了する. <br /></td></tr>
@@ -109,6 +108,32 @@ subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">output_dir</td><td>出力ディレクトリ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5b94db81d5058218490d862604ae17f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b94db81d5058218490d862604ae17f1">&#9670;&nbsp;</a></span>status_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">subroutine, public status::status_write </td>
+          <td>(</td>
+          <td class="paramtype">integer, intent(in)&#160;</td>
+          <td class="paramname"><em>istep</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>現在の状況をファイルに書き込む. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">istep</td><td>現在のステップ数 </td></tr>
   </table>
   </dd>
 </dl>

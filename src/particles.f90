@@ -82,108 +82,65 @@ contains
     !> @brief 粒子を分配する.
     !>
     !> @details
-    !!> 分配方法
+    !!> 分配方法(x)
     !!>   - 'uniform' : startからendまでの範囲に一様に分配する
+    !!>         x1 : 初めの位置
+    !!>         x2 : 最後の位置
     !!>   - 'random' : startからendまでの範囲にランダムに分配する
+    !!>         x1 : 初めの位置
+    !!>         x2 : 最後の位置
     !!>   - 'normal' : 平均mean, 分散stdの正規分布に従うように分配する
+    !!>         x1 : 平均位置
+    !!>         x2 : 位置の分散
+    !!>
+    !!> 分配方法(vx)
+    !!>   - 'uniform' : startからendまでの範囲に一様に分配する
+    !!>         vx1 : 初めの位置
+    !!>         vx2 : 最後の位置
+    !!>   - 'random' : startからendまでの範囲にランダムに分配する
+    !!>         vx1 : 初めの位置
+    !!>         vx2 : 最後の位置
+    !!>   - 'normal' : 平均mean, 分散stdの正規分布に従うように分配する
+    !!>         vx1 : 平均位置
+    !!>         vx2 : 位置の分散
     !>
     !> @param[in] npcl_add 追加する粒子数
     !> @param[in] ispec 追加する粒子の種類
     !> @param[in] x_mode 位置の分配方法('uniform', 'random', 'normal')
     !> @param[in] vx_mode 速度の分配方法('uniform', 'random', 'normal')
-    !> @param[in] x_start 初めの位置 (default: 0)
-    !> @param[in] x_end 最後の位置 (default: ngrid*dx)
-    !> @param[in] x_mean 平均位置 (default: 0.5*ngrid*dx)
-    !> @param[in] x_std 位置の分散 (default: dx)
-    !> @param[in] vx_start 最小速度 (default: -1)
-    !> @param[in] vx_end 最大速度 (default: 1)
-    !> @param[in] vx_mean 平均速度 (default: 0)
-    !> @param[in] vx_std 速度の分散 (default: 1)
-    subroutine particles_distribute(npcl_add, ispec, x_mode, vx_mode, &
-                                    x_start, x_end, x_mean, x_std, &
-                                    vx_start, vx_end, vx_mean, vx_std)
+    !> @param[in] x1 位置パラメータ1(詳細は分配方法(x)を参照)
+    !> @param[in] x2 位置パラメータ2(詳細は分配方法(x)を参照)
+    !> @param[in] vx1 速度パラメータ1(詳細は分配方法(vx)を参照)
+    !> @param[in] vx2 速度パラメータ2(詳細は分配方法(vx)を参照)
+    subroutine particles_distribute(npcl_add, ispec, x_mode, vx_mode, x1, x2, vx1, vx2)
         integer, intent(in) :: npcl_add
         integer, intent(in) :: ispec
         character(*), intent(in) :: x_mode, vx_mode
-        real(8), intent(in), optional :: x_start, x_end
-        real(8), intent(in), optional :: x_mean, x_std
-        real(8), intent(in), optional :: vx_start, vx_end
-        real(8), intent(in), optional :: vx_mean, vx_std
+        real(8), intent(in), optional :: x1, x2
+        real(8), intent(in), optional :: vx1, vx2
 
         integer ipcl
         integer :: npcl_prev
         real(8) :: x, vx
-        real(8) :: x_start_, x_end_
-        real(8) :: x_mean_, x_std_
-        real(8) :: vx_start_, vx_end_
-        real(8) :: vx_mean_, vx_std_
-
-        if (present(x_start)) then
-            x_start_ = x_start
-        else
-            x_start_ = 0
-        end if
-
-        if (present(x_end)) then
-            x_end_ = x_end
-        else
-            x_end_ = ngrid*dx
-        end if
-
-        if (present(x_mean)) then
-            x_mean_ = x_mean
-        else
-            x_mean_ = 0.5*ngrid*dx
-        end if
-
-        if (present(x_std)) then
-            x_std_ = x_std
-        else
-            x_std_ = dx
-        end if
-
-        if (present(vx_start)) then
-            vx_start_ = vx_start
-        else
-            vx_start_ = -1
-        end if
-
-        if (present(vx_end)) then
-            vx_end_ = vx_end
-        else
-            vx_end_ = 1
-        end if
-
-        if (present(vx_mean)) then
-            vx_mean_ = vx_mean
-        else
-            vx_mean_ = 0
-        end if
-
-        if (present(vx_std)) then
-            vx_std_ = vx_std
-        else
-            vx_std_ = 1
-        end if
 
         ! 粒子を追加する前に存在していた粒子の個数を覚えておく
         npcl_prev = npcl(ispec)
 
         do ipcl = 1, npcl_add
             if (x_mode == 'uniform') then
-                x = uniform(ipcl, npcl_add, x_start_, x_end_)
+                x = uniform(ipcl, npcl_add, x1, x2)
             else if (x_mode == 'random') then
-                x = random(x_start_, x_end_)
+                x = random(x1, x2)
             else if (x_mode == 'normal') then
-                x = normal(x_mean_, x_std_)
+                x = normal(x1, x2)
             end if
 
             if (vx_mode == 'uniform') then
-                vx = uniform(ipcl, npcl_add, vx_start_, vx_end_)
+                vx = uniform(ipcl, npcl_add, vx1, vx2)
             else if (vx_mode == 'random') then
-                vx = random(vx_start_, vx_end_)
+                vx = random(vx1, vx2)
             else if (vx_mode == 'normal') then
-                vx = normal(vx_mean_, vx_std_)
+                vx = normal(vx1, vx2)
             end if
 
             call particles_add_particle(ispec, x, vx, 0)

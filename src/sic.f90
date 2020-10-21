@@ -24,15 +24,41 @@ contains
     subroutine sic_init
         integer ispec
 
+        ! 初期化
         do ispec = 1, nspec
-            call particles_distribute(npcl_init(ispec), ispec, x_mode='uniform', vx_mode='normal')
-        end do
-
-        do ispec = 1, nspec
-            call create_mesh(ispec, 1, npcl(ispec), 1.0d0, periodic=.true.)
+            call create_mesh(ispec, npcl_init(ispec), 1.0d0, &
+                             x_mode='uniform', x1=0.0d0, x2=dx*ngrid, &
+                             vx_mode='normal', vx1=0.0d0, vx2=1.0d0, &
+                             periodic=.true.)
         end do
 
         call sic_correct_temprature
+    end subroutine
+
+    subroutine create_mesh(ispec, npcl_add, rate, x_mode, vx_mode, x1, x2, vx1, vx2, periodic)
+        integer, intent(in) :: ispec
+        integer, intent(in) :: npcl_add
+        real(8), intent(in) :: rate
+        character(*), intent(in) :: x_mode, vx_mode
+        real(8), intent(in) :: x1, x2
+        real(8), intent(in) :: vx1, vx2
+        logical, intent(in), optional :: periodic
+
+        integer :: npcl_prev
+        logical :: periodic_
+
+        if (present(periodic)) then
+            periodic_ = periodic
+        else
+            periodic_ = .false.
+        end if
+
+        ! 追加前の粒子数を取得
+        npcl_prev = npcl(ispec)
+        call particles_distribute(npcl_add, ispec, &
+                                  x_mode=x_mode, x1=x1, x2=x2, &
+                                  vx_mode=vx_mode, vx1=vx1, vx2=vx2)
+        call link_mesh(ispec, npcl_prev + 1, npcl_prev + npcl_add, rate, periodic=periodic_)
     end subroutine
 
     !> @brief 粒子メッシュを作成する.
@@ -42,7 +68,7 @@ contains
     !> @param[in] end_ipcl 最後の粒子インデックス
     !> @param[in] rate 粒子の割合
     !> @param[in] periodic 周期的なメッシュを作成する場合.true.
-    subroutine create_mesh(ispec, start_ipcl, end_ipcl, rate, periodic)
+    subroutine link_mesh(ispec, start_ipcl, end_ipcl, rate, periodic)
         integer, intent(in) :: ispec, start_ipcl, end_ipcl
         real(8), intent(in) :: rate
         logical, intent(in) :: periodic

@@ -18,6 +18,7 @@ add_executable(
     utils.f90
     argparse.f90
     fft.f90
+    simplex.f90
     sic.f90
 )
 

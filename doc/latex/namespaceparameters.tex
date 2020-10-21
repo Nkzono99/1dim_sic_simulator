@@ -55,6 +55,12 @@ logical, public \mbox{\hyperlink{namespaceparameters_a7b1033391d1fb60a6d86d63f46
 \mbox{\Hypertarget{namespaceparameters_adb9d01d9b0b50a47f2b7e32d5de22e53}\label{namespaceparameters_adb9d01d9b0b50a47f2b7e32d5de22e53}} 
 logical, public \mbox{\hyperlink{namespaceparameters_adb9d01d9b0b50a47f2b7e32d5de22e53}{output\+\_\+npcl}} = .false.
 \begin{DoxyCompactList}\small\item\em トレーサー数を出力するか \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a6f6d3e99c7b7c3bbeb5dcf4e50a4517f}\label{namespaceparameters_a6f6d3e99c7b7c3bbeb5dcf4e50a4517f}} 
+integer, public \mbox{\hyperlink{namespaceparameters_a6f6d3e99c7b7c3bbeb5dcf4e50a4517f}{output\+\_\+simplex\+\_\+steps}} = 0
+\begin{DoxyCompactList}\small\item\em Simplexの位置を出力するステップ数(0なら出力しない) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_ad6ccd73f245923d9b6fd55c867249f29}\label{namespaceparameters_ad6ccd73f245923d9b6fd55c867249f29}} 
+integer, public \mbox{\hyperlink{namespaceparameters_ad6ccd73f245923d9b6fd55c867249f29}{output\+\_\+nsimp}} = 100
+\begin{DoxyCompactList}\small\item\em 出力する\+Simplex数 \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceparameters_a106c7a93f18c58f213c610e83f4d6d31}\label{namespaceparameters_a106c7a93f18c58f213c610e83f4d6d31}} 
 integer, public \mbox{\hyperlink{namespaceparameters_a106c7a93f18c58f213c610e83f4d6d31}{boundary\+\_\+type}} = 0
 \begin{DoxyCompactList}\small\item\em 境界条件(0\+: 周期境界条件, 1\+: 反射境界条件) \end{DoxyCompactList}\item 
@@ -121,6 +127,12 @@ integer, public \mbox{\hyperlink{namespaceparameters_ada61f5d60d03aebac7ed807f92
 \mbox{\Hypertarget{namespaceparameters_a8302b40667dcbcc4e08fbb0f7d6a79f5}\label{namespaceparameters_a8302b40667dcbcc4e08fbb0f7d6a79f5}} 
 real(8), public \mbox{\hyperlink{namespaceparameters_a8302b40667dcbcc4e08fbb0f7d6a79f5}{refinement\+\_\+threshold}} = 1
 \begin{DoxyCompactList}\small\item\em refinementを実行するしきい値 \mbox{[}grid\mbox{]} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_aaa613a91d2fd548613de2274f77aced1}\label{namespaceparameters_aaa613a91d2fd548613de2274f77aced1}} 
+integer, public \mbox{\hyperlink{namespaceparameters_aaa613a91d2fd548613de2274f77aced1}{simplification\+\_\+interval}} = 0
+\begin{DoxyCompactList}\small\item\em simplificationを実行する間隔(0ならsimplificationを行わない) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceparameters_a5c0bff533aa4b9e14ec121783cbe090a}\label{namespaceparameters_a5c0bff533aa4b9e14ec121783cbe090a}} 
+real(8), public \mbox{\hyperlink{namespaceparameters_a5c0bff533aa4b9e14ec121783cbe090a}{simplification\+\_\+threshold}} = 0.\+1
+\begin{DoxyCompactList}\small\item\em simplificationを実行するしきい値 \mbox{[}grid\mbox{]} \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceparameters_a5e6c8b2ca772fbe6674bbaf3119a95a9}\label{namespaceparameters_a5e6c8b2ca772fbe6674bbaf3119a95a9}} 
 integer, public \mbox{\hyperlink{namespaceparameters_a5e6c8b2ca772fbe6674bbaf3119a95a9}{nthreads}} = 1
 \begin{DoxyCompactList}\small\item\em スレッド数 (プログラム実行時に格納される) \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -21,7 +21,7 @@ contains
     !> @param[in] x 追加する位置
     !> @param[in] vx 設定する速度
     !> @param[in] ncycle 設定する周期境界をまたいだ数
-    !> @retval status 追加に成功したら.true.
+    !> @param[out] status 追加に成功したら.true.
     subroutine particles_add_particle(ispec, x, vx, ncycle, status)
         integer, intent(in) :: ispec
         real(8), intent(in) :: x, vx

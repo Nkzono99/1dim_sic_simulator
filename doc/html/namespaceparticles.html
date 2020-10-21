@@ -74,12 +74,15 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions/Subroutines</h2></td></tr>
+<tr class="memitem:a31888e0b6a3913f9dc4400b80de83539"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparticles.html#a31888e0b6a3913f9dc4400b80de83539">particles_add_particle</a> (ispec, x, vx, ncycle, status)</td></tr>
+<tr class="memdesc:a31888e0b6a3913f9dc4400b80de83539"><td class="mdescLeft">&#160;</td><td class="mdescRight">粒子を一つ追加する.  <a href="namespaceparticles.html#a31888e0b6a3913f9dc4400b80de83539">More...</a><br /></td></tr>
+<tr class="separator:a31888e0b6a3913f9dc4400b80de83539"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5e7629ab4aabbc22dab82ece6f017fd"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparticles.html#af5e7629ab4aabbc22dab82ece6f017fd">particles_delete_particle</a> (ispec, ipcl)</td></tr>
+<tr class="memdesc:af5e7629ab4aabbc22dab82ece6f017fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">粒子を削除し、削除した位置に最後の粒子を移動する.  <a href="namespaceparticles.html#af5e7629ab4aabbc22dab82ece6f017fd">More...</a><br /></td></tr>
+<tr class="separator:af5e7629ab4aabbc22dab82ece6f017fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcbc6024ff4907d476e559ae16b4c8eb"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparticles.html#abcbc6024ff4907d476e559ae16b4c8eb">particles_distribute</a> (npcl_add, ispec, x_mode, vx_mode, x_start, x_end, x_mean, x_std, vx_start, vx_end, vx_mean, vx_std)</td></tr>
 <tr class="memdesc:abcbc6024ff4907d476e559ae16b4c8eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">粒子を分配する.  <a href="namespaceparticles.html#abcbc6024ff4907d476e559ae16b4c8eb">More...</a><br /></td></tr>
 <tr class="separator:abcbc6024ff4907d476e559ae16b4c8eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a33a04526965e35b16a96f690f7cc99"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparticles.html#a0a33a04526965e35b16a96f690f7cc99">particles_add_particle</a> (ispec, x, vx, ncycle)</td></tr>
-<tr class="memdesc:a0a33a04526965e35b16a96f690f7cc99"><td class="mdescLeft">&#160;</td><td class="mdescRight">粒子を一つ追加する.  <a href="namespaceparticles.html#a0a33a04526965e35b16a96f690f7cc99">More...</a><br /></td></tr>
-<tr class="separator:a0a33a04526965e35b16a96f690f7cc99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaad2868395b8383d8fa2740c290cd4aa"><td class="memItemLeft" align="right" valign="top"><a id="aaad2868395b8383d8fa2740c290cd4aa"></a>
 subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparticles.html#aaad2868395b8383d8fa2740c290cd4aa">particles_sort</a></td></tr>
 <tr class="memdesc:aaad2868395b8383d8fa2740c290cd4aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">粒子位置で粒子のインデックスをソートする. <br /></td></tr>
@@ -88,8 +91,8 @@ subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>粒子に対する処理モジュール. </p>
 </div><h2 class="groupheader">Function/Subroutine Documentation</h2>
-<a id="a0a33a04526965e35b16a96f690f7cc99"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a33a04526965e35b16a96f690f7cc99">&#9670;&nbsp;</a></span>particles_add_particle()</h2>
+<a id="a31888e0b6a3913f9dc4400b80de83539"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31888e0b6a3913f9dc4400b80de83539">&#9670;&nbsp;</a></span>particles_add_particle()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -116,7 +119,13 @@ subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">integer, intent(in)&#160;</td>
-          <td class="paramname"><em>ncycle</em>&#160;</td>
+          <td class="paramname"><em>ncycle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">logical, intent(out), optional&#160;</td>
+          <td class="paramname"><em>status</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -133,6 +142,44 @@ subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>追加する位置 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">vx</td><td>設定する速度 </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">ncycle</td><td>設定する周期境界をまたいだ数 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">status</td><td>追加に成功したら.true. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af5e7629ab4aabbc22dab82ece6f017fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5e7629ab4aabbc22dab82ece6f017fd">&#9670;&nbsp;</a></span>particles_delete_particle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">subroutine, public particles::particles_delete_particle </td>
+          <td>(</td>
+          <td class="paramtype">integer, intent(in)&#160;</td>
+          <td class="paramname"><em>ispec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer, intent(in)&#160;</td>
+          <td class="paramname"><em>ipcl</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>粒子を削除し、削除した位置に最後の粒子を移動する. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ispec</td><td>粒子の種類 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ipcl</td><td>粒子番号 </td></tr>
   </table>
   </dd>
 </dl>

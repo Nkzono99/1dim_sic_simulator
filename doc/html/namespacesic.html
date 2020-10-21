@@ -69,7 +69,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>simplexに対する処理モジュール.  
+<p>SIC法のメイン処理モジュール  
 <a href="namespacesic.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -78,9 +78,6 @@ Functions/Subroutines</h2></td></tr>
 subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesic.html#af76384b2a57a47d7b02f3574a5b1a2b9">sic_init</a></td></tr>
 <tr class="memdesc:af76384b2a57a47d7b02f3574a5b1a2b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">simplexを初期化する. <br /></td></tr>
 <tr class="separator:af76384b2a57a47d7b02f3574a5b1a2b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdb4c8e975017da107618e892a08d2b2"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesic.html#afdb4c8e975017da107618e892a08d2b2">sic_refinement</a> (threshold)</td></tr>
-<tr class="memdesc:afdb4c8e975017da107618e892a08d2b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refinementを適用する.  <a href="namespacesic.html#afdb4c8e975017da107618e892a08d2b2">More...</a><br /></td></tr>
-<tr class="separator:afdb4c8e975017da107618e892a08d2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2543398f0de764a44514acd6e4a0a93c"><td class="memItemLeft" align="right" valign="top"><a id="a2543398f0de764a44514acd6e4a0a93c"></a>
 subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesic.html#a2543398f0de764a44514acd6e4a0a93c">sic_scatter_on_grid</a></td></tr>
 <tr class="memdesc:a2543398f0de764a44514acd6e4a0a93c"><td class="mdescLeft">&#160;</td><td class="mdescRight">粒子電荷をグリッドに分配する. <br /></td></tr>
@@ -93,9 +90,15 @@ subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="
 subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesic.html#a8d98c7e0c3591ed7b0c8323abfa517f5">sic_correct_temprature</a></td></tr>
 <tr class="memdesc:a8d98c7e0c3591ed7b0c8323abfa517f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">設定した粒子温度になるように速度を補正する. <br /></td></tr>
 <tr class="separator:a8d98c7e0c3591ed7b0c8323abfa517f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdb4c8e975017da107618e892a08d2b2"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesic.html#afdb4c8e975017da107618e892a08d2b2">sic_refinement</a> (threshold)</td></tr>
+<tr class="memdesc:afdb4c8e975017da107618e892a08d2b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refinementを適用する.  <a href="namespacesic.html#afdb4c8e975017da107618e892a08d2b2">More...</a><br /></td></tr>
+<tr class="separator:afdb4c8e975017da107618e892a08d2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf145e07e179b44bc230c4cc5faa6daf"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesic.html#abf145e07e179b44bc230c4cc5faa6daf">sic_simplification</a> (threshold)</td></tr>
+<tr class="memdesc:abf145e07e179b44bc230c4cc5faa6daf"><td class="mdescLeft">&#160;</td><td class="mdescRight">トレーサー間距離がしきい値以下になったsimplexを統合する.  <a href="namespacesic.html#abf145e07e179b44bc230c4cc5faa6daf">More...</a><br /></td></tr>
+<tr class="separator:abf145e07e179b44bc230c4cc5faa6daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>simplexに対する処理モジュール. </p>
+<div class="textblock"><p>SIC法のメイン処理モジュール </p>
 </div><h2 class="groupheader">Function/Subroutine Documentation</h2>
 <a id="afdb4c8e975017da107618e892a08d2b2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afdb4c8e975017da107618e892a08d2b2">&#9670;&nbsp;</a></span>sic_refinement()</h2>
@@ -115,6 +118,32 @@ subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="
 
 <p>Refinementを適用する. </p>
 <p>トレーサー間がしきい値より離れた場合そのsimplexをしきい値未満になるまで分割する.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">threshold</td><td>しきい値 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abf145e07e179b44bc230c4cc5faa6daf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf145e07e179b44bc230c4cc5faa6daf">&#9670;&nbsp;</a></span>sic_simplification()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">subroutine, public sic::sic_simplification </td>
+          <td>(</td>
+          <td class="paramtype">real(8), intent(in)&#160;</td>
+          <td class="paramname"><em>threshold</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>トレーサー間距離がしきい値以下になったsimplexを統合する. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">threshold</td><td>しきい値 </td></tr>

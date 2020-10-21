@@ -1,4 +1,4 @@
-!> simplexに対する処理モジュール.
+!> @brief SIC法のメイン処理モジュール
 module sic
     use parameters
     use commons
@@ -20,7 +20,7 @@ module sic
 
 contains
 
-    !> simplexを初期化する.
+    !> @brief simplexを初期化する.
     subroutine sic_init
         integer ispec
 
@@ -35,7 +35,7 @@ contains
         call sic_correct_temprature
     end subroutine
 
-    !> 粒子メッシュを作成する.
+    !> @brief 粒子メッシュを作成する.
     !>
     !> @param[in] ispec 粒子の種類
     !> @param[in] start_ipcl 初めの粒子インデックス
@@ -55,43 +55,6 @@ contains
         if (periodic) then
             call simplex_add_simplex(ispec, start_ipcl, end_ipcl, rate, offset1=dx*ngrid)
         end if
-    end subroutine
-
-    !> @brief Refinementを適用する.
-    !>
-    !> @details トレーサー間がしきい値より離れた場合そのsimplexをしきい値未満になるまで分割する.
-    !>
-    !> @param[in] threshold しきい値
-    subroutine sic_refinement(threshold)
-        real(8), intent(in) :: threshold
-        integer :: isimp, ispec
-        integer :: ipcl1, ipcl2
-        real(8) :: offset1, offset2
-        real(8) :: px1, px2
-
-        do ispec = 1, nspec
-            isimp = 1
-            do while (isimp <= nsimp(ispec))
-                if (nsimp(ispec) >= max_npcl) then
-                    exit
-                end if
-                ipcl1 = simplices(isimp, ispec)%ipcl1
-                ipcl2 = simplices(isimp, ispec)%ipcl2
-                offset1 = simplices(isimp, ispec)%offset1
-                offset2 = simplices(isimp, ispec)%offset2
-                px1 = px(ipcl1, ispec) + ngrid*dx*ncycles(ipcl1, ispec) + offset1
-                px2 = px(ipcl2, ispec) + ngrid*dx*ncycles(ipcl2, ispec) + offset2
-
-                if (abs(px2 - px1) > threshold) then
-                    call simplex_split_simplex(isimp, ispec)
-
-                    ! まだsimplexを追加できるなら分割後のsimplexをチェックするためcontinue
-                    continue
-                end if
-
-                isimp = isimp + 1
-            end do
-        end do
     end subroutine
 
     !> @brief 粒子電荷をグリッドに分配する.
@@ -411,6 +374,46 @@ contains
         call boundary_correct_pcl
     end subroutine
 
+    !> @brief Refinementを適用する.
+    !>
+    !> @details トレーサー間がしきい値より離れた場合そのsimplexをしきい値未満になるまで分割する.
+    !>
+    !> @param[in] threshold しきい値
+    subroutine sic_refinement(threshold)
+        real(8), intent(in) :: threshold
+        integer :: isimp, ispec
+        integer :: ipcl1, ipcl2
+        real(8) :: offset1, offset2
+        real(8) :: px1, px2
+
+        do ispec = 1, nspec
+            isimp = 1
+            do while (isimp <= nsimp(ispec))
+                if (nsimp(ispec) >= max_npcl) then
+                    exit
+                end if
+                ipcl1 = simplices(isimp, ispec)%ipcl1
+                ipcl2 = simplices(isimp, ispec)%ipcl2
+                offset1 = simplices(isimp, ispec)%offset1
+                offset2 = simplices(isimp, ispec)%offset2
+                px1 = px(ipcl1, ispec) + ngrid*dx*ncycles(ipcl1, ispec) + offset1
+                px2 = px(ipcl2, ispec) + ngrid*dx*ncycles(ipcl2, ispec) + offset2
+
+                if (abs(px2 - px1) > threshold) then
+                    call simplex_split_simplex(isimp, ispec)
+
+                    ! まだsimplexを追加できるなら分割後のsimplexをチェックするためcontinue
+                    continue
+                end if
+
+                isimp = isimp + 1
+            end do
+        end do
+    end subroutine
+
+    !> @brief トレーサー間距離がしきい値以下になったsimplexを統合する.
+    !>
+    !> @param[in] threshold しきい値
     subroutine sic_simplification(threshold)
         real(8), intent(in) :: threshold
         integer :: isimp, ispec

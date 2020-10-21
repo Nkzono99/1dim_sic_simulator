@@ -137,6 +137,14 @@ logical, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el"
 logical, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparameters.html#adb9d01d9b0b50a47f2b7e32d5de22e53">output_npcl</a> = .false.</td></tr>
 <tr class="memdesc:adb9d01d9b0b50a47f2b7e32d5de22e53"><td class="mdescLeft">&#160;</td><td class="mdescRight">トレーサー数を出力するか <br /></td></tr>
 <tr class="separator:adb9d01d9b0b50a47f2b7e32d5de22e53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f6d3e99c7b7c3bbeb5dcf4e50a4517f"><td class="memItemLeft" align="right" valign="top"><a id="a6f6d3e99c7b7c3bbeb5dcf4e50a4517f"></a>
+integer, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparameters.html#a6f6d3e99c7b7c3bbeb5dcf4e50a4517f">output_simplex_steps</a> = 0</td></tr>
+<tr class="memdesc:a6f6d3e99c7b7c3bbeb5dcf4e50a4517f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplexの位置を出力するステップ数(0なら出力しない) <br /></td></tr>
+<tr class="separator:a6f6d3e99c7b7c3bbeb5dcf4e50a4517f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6ccd73f245923d9b6fd55c867249f29"><td class="memItemLeft" align="right" valign="top"><a id="ad6ccd73f245923d9b6fd55c867249f29"></a>
+integer, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparameters.html#ad6ccd73f245923d9b6fd55c867249f29">output_nsimp</a> = 100</td></tr>
+<tr class="memdesc:ad6ccd73f245923d9b6fd55c867249f29"><td class="mdescLeft">&#160;</td><td class="mdescRight">出力するSimplex数 <br /></td></tr>
+<tr class="separator:ad6ccd73f245923d9b6fd55c867249f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a106c7a93f18c58f213c610e83f4d6d31"><td class="memItemLeft" align="right" valign="top"><a id="a106c7a93f18c58f213c610e83f4d6d31"></a>
 integer, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparameters.html#a106c7a93f18c58f213c610e83f4d6d31">boundary_type</a> = 0</td></tr>
 <tr class="memdesc:a106c7a93f18c58f213c610e83f4d6d31"><td class="mdescLeft">&#160;</td><td class="mdescRight">境界条件(0: 周期境界条件, 1: 反射境界条件) <br /></td></tr>
@@ -225,6 +233,14 @@ integer, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el"
 real(8), public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparameters.html#a8302b40667dcbcc4e08fbb0f7d6a79f5">refinement_threshold</a> = 1</td></tr>
 <tr class="memdesc:a8302b40667dcbcc4e08fbb0f7d6a79f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">refinementを実行するしきい値 [grid] <br /></td></tr>
 <tr class="separator:a8302b40667dcbcc4e08fbb0f7d6a79f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa613a91d2fd548613de2274f77aced1"><td class="memItemLeft" align="right" valign="top"><a id="aaa613a91d2fd548613de2274f77aced1"></a>
+integer, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparameters.html#aaa613a91d2fd548613de2274f77aced1">simplification_interval</a> = 0</td></tr>
+<tr class="memdesc:aaa613a91d2fd548613de2274f77aced1"><td class="mdescLeft">&#160;</td><td class="mdescRight">simplificationを実行する間隔(0ならsimplificationを行わない) <br /></td></tr>
+<tr class="separator:aaa613a91d2fd548613de2274f77aced1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c0bff533aa4b9e14ec121783cbe090a"><td class="memItemLeft" align="right" valign="top"><a id="a5c0bff533aa4b9e14ec121783cbe090a"></a>
+real(8), public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparameters.html#a5c0bff533aa4b9e14ec121783cbe090a">simplification_threshold</a> = 0.1</td></tr>
+<tr class="memdesc:a5c0bff533aa4b9e14ec121783cbe090a"><td class="mdescLeft">&#160;</td><td class="mdescRight">simplificationを実行するしきい値 [grid] <br /></td></tr>
+<tr class="separator:a5c0bff533aa4b9e14ec121783cbe090a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e6c8b2ca772fbe6674bbaf3119a95a9"><td class="memItemLeft" align="right" valign="top"><a id="a5e6c8b2ca772fbe6674bbaf3119a95a9"></a>
 integer, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparameters.html#a5e6c8b2ca772fbe6674bbaf3119a95a9">nthreads</a> = 1</td></tr>
 <tr class="memdesc:a5e6c8b2ca772fbe6674bbaf3119a95a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">スレッド数 (プログラム実行時に格納される) <br /></td></tr>

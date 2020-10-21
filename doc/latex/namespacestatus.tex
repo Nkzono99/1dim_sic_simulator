@@ -10,8 +10,7 @@
 \item 
 subroutine, public \mbox{\hyperlink{namespacestatus_af6c30d53c06c9d37e63f7485addea26b}{status\+\_\+start}} (output\+\_\+dir)
 \begin{DoxyCompactList}\small\item\em 出力ファイルを作成する. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{namespacestatus_ad688962536d417781c6e5e691a9aa71b}\label{namespacestatus_ad688962536d417781c6e5e691a9aa71b}} 
-subroutine, public \mbox{\hyperlink{namespacestatus_ad688962536d417781c6e5e691a9aa71b}{status\+\_\+write}}
+subroutine, public \mbox{\hyperlink{namespacestatus_a5b94db81d5058218490d862604ae17f1}{status\+\_\+write}} (istep)
 \begin{DoxyCompactList}\small\item\em 現在の状況をファイルに書き込む. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespacestatus_a02a6bc05bd24340901d0140cb318afa4}\label{namespacestatus_a02a6bc05bd24340901d0140cb318afa4}} 
 subroutine, public \mbox{\hyperlink{namespacestatus_a02a6bc05bd24340901d0140cb318afa4}{status\+\_\+close}}
@@ -35,5 +34,20 @@ subroutine, public \mbox{\hyperlink{namespacestatus_a02a6bc05bd24340901d0140cb31
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em output\+\_\+dir} & 出力ディレクトリ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacestatus_a5b94db81d5058218490d862604ae17f1}\label{namespacestatus_a5b94db81d5058218490d862604ae17f1}} 
+\index{status@{status}!status\_write@{status\_write}}
+\index{status\_write@{status\_write}!status@{status}}
+\doxysubsubsection{\texorpdfstring{status\_write()}{status\_write()}}
+{\footnotesize\ttfamily subroutine, public status\+::status\+\_\+write (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{istep }\end{DoxyParamCaption})}
+
+
+
+現在の状況をファイルに書き込む. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em istep} & 現在のステップ数 \\
 \hline
 \end{DoxyParams}

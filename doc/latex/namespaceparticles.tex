@@ -8,10 +8,12 @@
 \doxysubsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
+subroutine, public \mbox{\hyperlink{namespaceparticles_a31888e0b6a3913f9dc4400b80de83539}{particles\+\_\+add\+\_\+particle}} (ispec, x, vx, ncycle, status)
+\begin{DoxyCompactList}\small\item\em 粒子を一つ追加する. \end{DoxyCompactList}\item 
+subroutine, public \mbox{\hyperlink{namespaceparticles_af5e7629ab4aabbc22dab82ece6f017fd}{particles\+\_\+delete\+\_\+particle}} (ispec, ipcl)
+\begin{DoxyCompactList}\small\item\em 粒子を削除し、削除した位置に最後の粒子を移動する. \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespaceparticles_abcbc6024ff4907d476e559ae16b4c8eb}{particles\+\_\+distribute}} (npcl\+\_\+add, ispec, x\+\_\+mode, vx\+\_\+mode, x\+\_\+start, x\+\_\+end, x\+\_\+mean, x\+\_\+std, vx\+\_\+start, vx\+\_\+end, vx\+\_\+mean, vx\+\_\+std)
 \begin{DoxyCompactList}\small\item\em 粒子を分配する. \end{DoxyCompactList}\item 
-subroutine, public \mbox{\hyperlink{namespaceparticles_a0a33a04526965e35b16a96f690f7cc99}{particles\+\_\+add\+\_\+particle}} (ispec, x, vx, ncycle)
-\begin{DoxyCompactList}\small\item\em 粒子を一つ追加する. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceparticles_aaad2868395b8383d8fa2740c290cd4aa}\label{namespaceparticles_aaad2868395b8383d8fa2740c290cd4aa}} 
 subroutine, public \mbox{\hyperlink{namespaceparticles_aaad2868395b8383d8fa2740c290cd4aa}{particles\+\_\+sort}}
 \begin{DoxyCompactList}\small\item\em 粒子位置で粒子のインデックスをソートする. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -21,11 +23,11 @@ subroutine, public \mbox{\hyperlink{namespaceparticles_aaad2868395b8383d8fa2740c
 粒子に対する処理モジュール. 
 
 \doxysubsection{Function/\+Subroutine Documentation}
-\mbox{\Hypertarget{namespaceparticles_a0a33a04526965e35b16a96f690f7cc99}\label{namespaceparticles_a0a33a04526965e35b16a96f690f7cc99}} 
+\mbox{\Hypertarget{namespaceparticles_a31888e0b6a3913f9dc4400b80de83539}\label{namespaceparticles_a31888e0b6a3913f9dc4400b80de83539}} 
 \index{particles@{particles}!particles\_add\_particle@{particles\_add\_particle}}
 \index{particles\_add\_particle@{particles\_add\_particle}!particles@{particles}}
 \doxysubsubsection{\texorpdfstring{particles\_add\_particle()}{particles\_add\_particle()}}
-{\footnotesize\ttfamily subroutine, public particles\+::particles\+\_\+add\+\_\+particle (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{ispec,  }\item[{real(8), intent(in)}]{x,  }\item[{real(8), intent(in)}]{vx,  }\item[{integer, intent(in)}]{ncycle }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily subroutine, public particles\+::particles\+\_\+add\+\_\+particle (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{ispec,  }\item[{real(8), intent(in)}]{x,  }\item[{real(8), intent(in)}]{vx,  }\item[{integer, intent(in)}]{ncycle,  }\item[{logical, intent(out), optional}]{status }\end{DoxyParamCaption})}
 
 
 
@@ -40,6 +42,25 @@ subroutine, public \mbox{\hyperlink{namespaceparticles_aaad2868395b8383d8fa2740c
 \mbox{\texttt{ in}}  & {\em vx} & 設定する速度 \\
 \hline
 \mbox{\texttt{ in}}  & {\em ncycle} & 設定する周期境界をまたいだ数 \\
+\hline
+\mbox{\texttt{ out}}  & {\em status} & 追加に成功したら.\+true. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceparticles_af5e7629ab4aabbc22dab82ece6f017fd}\label{namespaceparticles_af5e7629ab4aabbc22dab82ece6f017fd}} 
+\index{particles@{particles}!particles\_delete\_particle@{particles\_delete\_particle}}
+\index{particles\_delete\_particle@{particles\_delete\_particle}!particles@{particles}}
+\doxysubsubsection{\texorpdfstring{particles\_delete\_particle()}{particles\_delete\_particle()}}
+{\footnotesize\ttfamily subroutine, public particles\+::particles\+\_\+delete\+\_\+particle (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{ispec,  }\item[{integer, intent(in)}]{ipcl }\end{DoxyParamCaption})}
+
+
+
+粒子を削除し、削除した位置に最後の粒子を移動する. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em ispec} & 粒子の種類 \\
+\hline
+\mbox{\texttt{ in}}  & {\em ipcl} & 粒子番号 \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{namespaceparticles_abcbc6024ff4907d476e559ae16b4c8eb}\label{namespaceparticles_abcbc6024ff4907d476e559ae16b4c8eb}} 

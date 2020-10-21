@@ -101,7 +101,7 @@ contains
     subroutine write_kinetic_energy(output_number)
         integer, intent(in) :: output_number
         integer ispec, isimp, ipcl1, ipcl2
-        real(8) energy, mean_pvx, rate
+        real(8) energy, pvx1, pvx2, rate
 
         energy = 0
         do ispec = 1, nspec
@@ -109,8 +109,11 @@ contains
                 ipcl1 = simplices(isimp, ispec)%ipcl1
                 ipcl2 = simplices(isimp, ispec)%ipcl2
                 rate = simplices(isimp, ispec)%rate
-                mean_pvx = 0.5*(pvx(ipcl1, ispec) + pvx(ipcl2, ispec))
-                energy = energy + 0.5*rate*ms(ispec)*mean_pvx*mean_pvx
+                pvx1 = pvx(ipcl1, ispec)
+                pvx2 = pvx(ipcl2, ispec)
+                ! simplexの速度はトレーサーの速度の重み付き和になるため以下のように計算する.
+                ! E = 1/2 * m * ∫_0^1(r*vx1 + (1-r)*vx2) dr
+                energy = energy + rate*ms(ispec)*(pvx1*pvx1+pvx1*pvx2+pvx2*pvx2) / 6
             end do
         end do
 
